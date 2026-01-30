@@ -7,7 +7,7 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 6px);
+  --radius-xl: calc(var(--radius) + 10px);
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -38,37 +38,37 @@
 }
 
 :root {
-  --background: 210 50% 98%;
-  --foreground: 228 24% 18%;
+  --background: 210 55% 98%;
+  --foreground: 228 24% 16%;
 
   --card: 0 0% 100%;
-  --card-foreground: 228 24% 18%;
-  --card-border: 220 20% 90%;
+  --card-foreground: 228 24% 16%;
+  --card-border: 220 22% 88%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 228 24% 18%;
+  --popover-foreground: 228 24% 16%;
 
-  --border: 220 22% 90%;
-  --input: 220 22% 86%;
-  --ring: 196 90% 52%;
+  --border: 220 22% 88%;
+  --input: 220 22% 84%;
+  --ring: 196 92% 52%;
 
-  /* Elegant but festive: slightly toned-down primaries */
-  --primary: 196 78% 44%;
+  /* More kid-ish: brighter candy colors */
+  --primary: 196 92% 50%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 340 80% 62%;
+  --secondary: 330 92% 70%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 210 40% 96%;
-  --muted-foreground: 228 14% 40%;
+  --muted: 210 45% 96%;
+  --muted-foreground: 228 14% 42%;
 
-  --accent: 48 92% 60%;
-  --accent-foreground: 228 24% 18%;
+  --accent: 48 98% 64%;
+  --accent-foreground: 228 24% 16%;
 
   --destructive: 0 84% 55%;
   --destructive-foreground: 0 0% 100%;
 
-  --radius: 1rem;
+  --radius: 1.25rem;
 
   --opaque-button-border-intensity: -8;
   --button-outline: rgba(0, 0, 0, 0.1);
@@ -78,10 +78,10 @@
 
   --shadow-2xs: 0px 1px 0px 0px hsl(220 18% 30% / 0.05);
   --shadow-xs: 0px 1px 0px 0px hsl(220 18% 30% / 0.07);
-  --shadow-sm: 0px 1px 0px 0px hsl(220 18% 30% / 0.08), 0px 4px 12px -8px hsl(220 18% 30% / 0.18);
-  --shadow: 0px 1px 0px 0px hsl(220 18% 30% / 0.08), 0px 10px 22px -18px hsl(220 18% 30% / 0.35);
-  --shadow-md: 0px 1px 0px 0px hsl(220 18% 30% / 0.1), 0px 16px 34px -24px hsl(220 18% 30% / 0.45);
-  --shadow-lg: 0px 1px 0px 0px hsl(220 18% 30% / 0.12), 0px 22px 54px -34px hsl(220 18% 30% / 0.55);
+  --shadow-sm: 0px 1px 0px 0px hsl(220 18% 30% / 0.08), 0px 8px 18px -14px hsl(196 92% 50% / 0.22);
+  --shadow: 0px 1px 0px 0px hsl(220 18% 30% / 0.08), 0px 18px 36px -28px hsl(330 92% 70% / 0.34);
+  --shadow-md: 0px 1px 0px 0px hsl(220 18% 30% / 0.1), 0px 26px 50px -38px hsl(48 98% 64% / 0.40);
+  --shadow-lg: 0px 1px 0px 0px hsl(220 18% 30% / 0.12), 0px 34px 70px -50px hsl(196 92% 50% / 0.50);
 }
 
 a {
@@ -107,46 +107,54 @@ a {
     position: relative;
     min-height: 100vh;
     background:
-      radial-gradient(1100px 520px at 10% -10%, hsl(196 78% 52% / 0.18), transparent 60%),
-      radial-gradient(900px 520px at 90% 10%, hsl(340 80% 68% / 0.16), transparent 60%),
-      radial-gradient(800px 520px at 30% 110%, hsl(48 92% 62% / 0.12), transparent 60%),
-      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(210 55% 97%) 100%);
+      radial-gradient(1100px 520px at 10% -10%, hsl(196 92% 58% / 0.22), transparent 60%),
+      radial-gradient(900px 520px at 90% 10%, hsl(330 92% 74% / 0.22), transparent 60%),
+      radial-gradient(800px 520px at 30% 110%, hsl(48 98% 66% / 0.18), transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(210 60% 97%) 100%);
   }
 
-  /* Elegant confetti: fewer dots, lower opacity */
+  /* Playful pattern overlay */
   .celebrate-shell::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.12;
+    opacity: 0.26;
     background-image:
-      radial-gradient(circle at 14px 16px, hsl(340 80% 62% / 0.30) 1.4px, transparent 1.6px),
-      radial-gradient(circle at 34px 34px, hsl(196 78% 44% / 0.26) 1.2px, transparent 1.4px),
-      radial-gradient(circle at 50px 18px, hsl(48 92% 60% / 0.22) 1.3px, transparent 1.5px);
-    background-size: 84px 84px;
+      radial-gradient(circle at 14px 16px, hsl(330 92% 70% / 0.34) 1.6px, transparent 1.8px),
+      radial-gradient(circle at 34px 34px, hsl(196 92% 50% / 0.30) 1.5px, transparent 1.7px),
+      radial-gradient(circle at 54px 18px, hsl(48 98% 64% / 0.30) 1.6px, transparent 1.8px),
+      radial-gradient(circle at 18px 52px, hsl(140 68% 44% / 0.22) 1.5px, transparent 1.7px);
+    background-size: 56px 56px;
     mix-blend-mode: multiply;
   }
 
-  /* Remove streamer layer for a cleaner, elegant look */
+  /* Cute streamers layer */
   .celebrate-shell::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0;
+    opacity: 0.22;
+    background-image:
+      linear-gradient(135deg, transparent 0 46%, hsl(196 92% 50% / 0.20) 46% 48%, transparent 48% 100%),
+      linear-gradient(225deg, transparent 0 46%, hsl(330 92% 70% / 0.18) 46% 48%, transparent 48% 100%),
+      linear-gradient(135deg, transparent 0 46%, hsl(48 98% 64% / 0.16) 46% 48%, transparent 48% 100%);
+    background-size: 240px 240px;
+    background-position: 0 0, 60px 40px, 120px 0;
+    mix-blend-mode: multiply;
   }
 
   .glass {
-    background: hsl(0 0% 100% / 0.80);
-    border: 1px solid hsl(220 22% 90% / 0.9);
+    background: hsl(0 0% 100% / 0.78);
+    border: 1px solid hsl(220 22% 88% / 0.9);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
   }
 
   .soft-card {
-    background: hsl(0 0% 100% / 0.96);
-    border: 1px solid hsl(220 22% 90% / 0.92);
+    background: hsl(0 0% 100% / 0.95);
+    border: 1px solid hsl(220 22% 88% / 0.9);
     box-shadow: var(--shadow-sm);
   }
 
@@ -154,14 +162,14 @@ a {
     border-radius: 9999px;
     border: 1px solid hsl(220 22% 88%);
     background: hsl(0 0% 100% / 0.82);
-    box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06), 0 12px 30px -28px hsl(196 78% 44% / 0.35);
-    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06), 0 18px 50px -42px hsl(330 92% 70% / 0.55);
+    backdrop-filter: blur(10px);
   }
 
   .bubble {
     border-radius: 9999px;
-    background: hsl(0 0% 100% / 0.80);
-    border: 1px solid hsl(220 22% 90%);
+    background: hsl(0 0% 100% / 0.78);
+    border: 1px solid hsl(220 22% 88%);
     box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06);
   }
 
@@ -170,7 +178,7 @@ a {
   }
 
   .focus-ring:focus-visible {
-    box-shadow: 0 0 0 4px hsl(196 78% 46% / 0.20);
+    box-shadow: 0 0 0 4px hsl(196 92% 52% / 0.25);
   }
 
   .grid-photos {
@@ -182,9 +190,9 @@ a {
   .photo-tile {
     position: relative;
     overflow: hidden;
-    border-radius: 18px;
-    background: linear-gradient(180deg, hsl(0 0% 100% / 0.90), hsl(0 0% 100% / 0.70));
-    border: 1px solid hsl(220 22% 90%);
+    border-radius: 20px;
+    background: linear-gradient(180deg, hsl(0 0% 100% / 0.88), hsl(0 0% 100% / 0.68));
+    border: 1px solid hsl(220 22% 88%);
     box-shadow: var(--shadow-sm);
   }
 
@@ -194,22 +202,22 @@ a {
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(520px 180px at 10% 0%, hsl(48 92% 60% / 0.20), transparent 55%),
-      radial-gradient(520px 180px at 90% 10%, hsl(340 80% 62% / 0.16), transparent 55%),
-      radial-gradient(520px 180px at 50% 110%, hsl(196 78% 44% / 0.16), transparent 55%);
-    opacity: 0.60;
+      radial-gradient(520px 180px at 10% 0%, hsl(48 98% 64% / 0.30), transparent 55%),
+      radial-gradient(520px 180px at 90% 10%, hsl(330 92% 70% / 0.22), transparent 55%),
+      radial-gradient(520px 180px at 50% 110%, hsl(196 92% 50% / 0.22), transparent 55%);
+    opacity: 0.70;
   }
 
   .photo-tile > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.02);
-    transition: transform 520ms ease;
+    transform: scale(1.03);
+    transition: transform 500ms ease;
   }
 
   .photo-tile:hover > img {
-    transform: scale(1.06);
+    transform: scale(1.08);
   }
 
   .photo-label {
@@ -221,20 +229,20 @@ a {
     letter-spacing: -0.01em;
     border-radius: 9999px;
     background: hsl(0 0% 100% / 0.84);
-    border: 1px solid hsl(220 22% 90%);
-    backdrop-filter: blur(12px);
+    border: 1px solid hsl(220 22% 88%);
+    backdrop-filter: blur(10px);
   }
 
-  /* More refined click feedback */
+  /* Bouncier, more playful click */
   .party-bounce {
-    transition: transform 160ms ease, filter 160ms ease;
+    transition: transform 160ms cubic-bezier(0.2, 0.9, 0.2, 1), filter 160ms ease;
   }
 
   .party-bounce:hover {
-    filter: brightness(1.02);
+    filter: brightness(1.03);
   }
 
   .party-bounce:active {
-    transform: translateY(1px) scale(0.99);
+    transform: translateY(1px) scale(0.98);
   }
 }
