@@ -1,0 +1,69 @@
+Requisitos para el sitio web "Celebrate Córdoba"
+1. Información General del Proyecto
+Nombre del sitio: Celebrate Córdoba
+Propósito: Sitio web para organización de cumpleaños y eventos
+Público objetivo: Familias y personas que buscan celebrar cumpleaños
+2. Estructura y Páginas
+2.1 Página Principal (Home)
+Debe contener las siguientes secciones en orden:
+
+Header/Encabezado
+Logo de "Celebrate Córdoba" (proporcionado por el cliente)
+Menú de navegación responsive
+Botón de reserva destacado
+Sección Hero/Principal
+Banner atractivo con imagen de fondo de las instalaciones
+Título principal: "Celebrate Córdoba"
+Subtítulo descriptivo sobre el servicio
+Call-to-Action (CTA) para reservar
+Sección de Presentación
+Descripción breve del servicio
+Valores diferenciales (por qué elegir Celebrate Córdoba)
+Galería de Instalaciones
+Grid/carrusel de fotos de las instalaciones
+Imágenes de alta calidad mostrando:
+Salones de eventos
+Áreas de juegos
+Decoraciones
+Fiestas anteriores (opcional)
+Mínimo 6-8 fotografías
+Sección de Tarifas/Precios
+Presentación clara de los paquetes disponibles basados en la tarifa proporcionada
+Información detallada de cada paquete:
+Nombre del paquete
+Precio
+Servicios incluidos
+Duración
+Número de personas
+Diseño en cards o tabla comparativa
+Calendario de Disponibilidad
+Calendario interactivo mensual
+Código de colores:
+Verde/Disponible: Días disponibles para reservar
+Rojo/Ocupado: Días ya reservados
+Gris/No disponible: Días pasados o bloqueados
+Vista por defecto: mes actual
+Navegación entre meses (anterior/siguiente)
+Funcionalidad de administrador (a implementar posteriormente):
+Panel de administración para marcar días como disponibles/ocupados
+Gestión de reservas
+Sección de Contacto
+Formulario de contacto con campos:
+Nombre completo
+Email
+Teléfono
+Fecha deseada para el evento
+Número de invitados
+Mensaje/comentarios
+Botón de envío
+Footer/Pie de página
+Dirección física: [Dirección de ejemplo en Córdoba, España/Argentina]
+Ejemplo: "Calle Ejemplo 123, 14001 Córdoba"
+Número de WhatsApp: [Número de contacto]
+Ejemplo: "+34 XXX XXX XXX" o equivalente
+Icono de WhatsApp con enlace directo para iniciar chat
+Correo electrónico: [Email de contacto]
+Ejemplo: "info@celebratecordoba.com"
+Enlace mailto activo
+Redes sociales (Instagram, Facebook) - iconos con enlaces
+Copyright © 2024 Celebrate Córdoba
