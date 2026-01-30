@@ -15,10 +15,24 @@ import {
   Star,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay, isBefore } from "date-fns";
+import {
+  format,
+  addMonths,
+  subMonths,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  addDays,
+  isSameMonth,
+  isSameDay,
+  isBefore,
+} from "date-fns";
 
 import logo from "@assets/image_1769815092292.png";
 import tarifasImg from "@assets/image_1769815134263.png";
+import heroBalloons from "@/assets/images/hero-balloons.png";
+import partyStickers from "@/assets/images/stickers-party.png";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -117,7 +131,7 @@ function Nav() {
             <div className="flex items-center gap-2">
               <Button
                 onClick={() => scrollToId("contacto")}
-                className="rounded-full font-extrabold"
+                className="rounded-full font-extrabold party-bounce"
                 data-testid="button-reservar"
               >
                 Reservar
@@ -165,11 +179,22 @@ function Hero() {
   return (
     <section id="inicio" className="pt-8 sm:pt-10" data-testid="section-hero">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[28px] border border-border/70 soft-card">
+        <div className="relative overflow-hidden rounded-[32px] border border-border/70 soft-card">
+          <div className="absolute inset-0">
+            <img
+              src={heroBalloons}
+              alt="Fondo de globos"
+              className="absolute inset-0 h-full w-full object-cover opacity-[0.35]"
+              loading="lazy"
+              data-testid="img-hero-bg"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/30 to-white/85" />
+          </div>
+
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-24 -left-28 h-72 w-72 rounded-full bg-[hsl(196_92%_52%/0.35)] blur-3xl" />
-            <div className="absolute -top-20 -right-28 h-72 w-72 rounded-full bg-[hsl(340_92%_68%/0.35)] blur-3xl" />
-            <div className="absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-[hsl(48_98%_62%/0.3)] blur-3xl" />
+            <div className="absolute -top-24 -left-28 h-80 w-80 rounded-full bg-[hsl(196_92%_52%/0.40)] blur-3xl" />
+            <div className="absolute -top-20 -right-28 h-80 w-80 rounded-full bg-[hsl(340_92%_68%/0.40)] blur-3xl" />
+            <div className="absolute -bottom-28 left-1/3 h-80 w-80 rounded-full bg-[hsl(48_98%_62%/0.34)] blur-3xl" />
           </div>
 
           <div className="relative grid md:grid-cols-12 gap-6 p-6 sm:p-9">
@@ -181,24 +206,24 @@ function Hero() {
             >
               <div className="inline-flex items-center gap-2 sticker px-3 py-1.5 text-sm font-extrabold" data-testid="badge-hero">
                 <Sparkles className="h-4 w-4 text-[hsl(340_92%_60%)]" />
-                Espacio pensado para celebrar
+                ¡Hora de celebrar!
               </div>
 
               <h1
-                className="mt-4 font-display text-4xl sm:text-5xl leading-[1.02] font-extrabold tracking-tight"
+                className="mt-4 font-display text-4xl sm:text-6xl leading-[1.00] font-extrabold tracking-tight"
                 data-testid="text-title"
               >
                 Celebrate Córdoba
               </h1>
               <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-prose" data-testid="text-subtitle">
-                Organizamos cumpleaños y eventos con un ambiente cálido, divertido y súper cuidado.
-                Tú traes las ganas; nosotros ponemos el plan.
+                Cumpleaños y eventos con un look adorable, mucho color y cero estrés.
+                Tú disfruta; nosotros lo hacemos fácil.
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={() => scrollToId("disponibilidad")}
-                  className="rounded-full font-extrabold"
+                  className="rounded-full font-extrabold party-bounce"
                   data-testid="button-ver-disponibilidad"
                 >
                   <CalendarIcon className="h-4 w-4" />
@@ -208,7 +233,7 @@ function Hero() {
                 <Button
                   variant="secondary"
                   onClick={() => scrollToId("tarifas")}
-                  className="rounded-full font-extrabold"
+                  className="rounded-full font-extrabold party-bounce"
                   data-testid="button-ver-tarifas"
                 >
                   Ver tarifas
@@ -218,13 +243,13 @@ function Hero() {
               <div className="mt-7 grid sm:grid-cols-3 gap-3">
                 {[
                   { title: "Instalaciones", desc: "Salón + zona de juegos", icon: Star },
-                  { title: "Ambiente", desc: "Decoración y detalles", icon: Sparkles },
-                  { title: "Fácil", desc: "Reserva en pocos pasos", icon: Check },
+                  { title: "Decoración", desc: "Detalles listos para fotos", icon: Sparkles },
+                  { title: "Reserva fácil", desc: "En pocos pasos", icon: Check },
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-border/70 bg-white/70 p-4 shadow-sm"
-                    data-testid={`card-hero-${item.title.toLowerCase()}`}
+                    className="rounded-2xl border border-border/70 bg-white/75 p-4 shadow-sm hover:shadow transition"
+                    data-testid={`card-hero-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     <item.icon className="h-5 w-5 text-[hsl(196_92%_46%)]" />
                     <div className="mt-2 font-extrabold tracking-tight">{item.title}</div>
@@ -240,11 +265,22 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
             >
-              <div className="relative h-full rounded-3xl overflow-hidden border border-border/70 bg-white/60 shadow-sm">
+              <div className="relative h-full rounded-3xl overflow-hidden border border-border/70 bg-white/70 shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/70" />
                 <div className="p-5">
-                  <div className="font-display text-2xl font-extrabold tracking-tight">Lo que te llevas</div>
-                  <ul className="mt-3 grid gap-2 text-sm">
+                  <div className="font-display text-2xl font-extrabold tracking-tight">El kit del cumple</div>
+
+                  <div className="mt-3 rounded-2xl overflow-hidden border border-border/70 bg-white/70">
+                    <img
+                      src={partyStickers}
+                      alt="Stickers de fiesta"
+                      className="w-full h-auto"
+                      loading="lazy"
+                      data-testid="img-party-stickers"
+                    />
+                  </div>
+
+                  <ul className="mt-4 grid gap-2 text-sm">
                     {[
                       "Atención personalizada",
                       "Espacio cómodo para familias",
@@ -252,7 +288,7 @@ function Hero() {
                       "Hora suelta y extras",
                     ].map((t, idx) => (
                       <li key={t} className="flex items-start gap-2" data-testid={`list-hero-${idx}`}>
-                        <span className="mt-0.5 h-5 w-5 rounded-full bg-[hsl(48_98%_62%/0.4)] border border-border grid place-items-center">
+                        <span className="mt-0.5 h-5 w-5 rounded-full bg-[hsl(48_98%_62%/0.45)] border border-border grid place-items-center">
                           <Check className="h-3.5 w-3.5 text-foreground" />
                         </span>
                         <span className="text-foreground/85">{t}</span>
@@ -260,13 +296,13 @@ function Hero() {
                     ))}
                   </ul>
 
-                  <div className="mt-5 rounded-2xl border border-border/70 bg-white/70 p-4">
+                  <div className="mt-5 rounded-2xl border border-border/70 bg-white/75 p-4">
                     <div className="text-xs font-extrabold text-muted-foreground">Reserva rápida</div>
                     <div className="mt-1 font-extrabold tracking-tight" data-testid="text-cta-mini">
                       Elige fecha, envía consulta y te confirmamos.
                     </div>
                     <Button
-                      className="mt-3 w-full rounded-full font-extrabold"
+                      className="mt-3 w-full rounded-full font-extrabold party-bounce"
                       onClick={() => scrollToId("contacto")}
                       data-testid="button-cta-contacto"
                     >
