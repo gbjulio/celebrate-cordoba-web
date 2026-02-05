@@ -142,29 +142,29 @@ a {
   }
 
   .glass {
-    background: hsl(0 0% 100%);
-    border: 1px solid hsl(220 18% 90%);
+    background: hsl(0 0% 100% / 0.78);
+    border: 1px solid hsl(220 18% 90% / 0.9);
     box-shadow: var(--shadow);
-    backdrop-filter: none;
+    backdrop-filter: blur(12px);
   }
 
   .soft-card {
-    background: hsl(0 0% 100%);
-    border: 1px solid hsl(220 18% 90%);
+    background: hsl(0 0% 100% / 0.96);
+    border: 1px solid hsl(220 18% 90% / 0.95);
     box-shadow: var(--shadow-sm);
   }
 
   .sticker {
     border-radius: 9999px;
     border: 1px solid hsl(220 18% 88%);
-    background: hsl(0 0% 100%);
+    background: hsl(0 0% 100% / 0.82);
     box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06), 0 16px 36px -30px hsl(196 92% 46% / 0.28);
-    backdrop-filter: none;
+    backdrop-filter: blur(12px);
   }
 
   .bubble {
     border-radius: 9999px;
-    background: hsl(0 0% 100%);
+    background: hsl(0 0% 100% / 0.78);
     border: 1px solid hsl(220 18% 90%);
     box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06);
   }
