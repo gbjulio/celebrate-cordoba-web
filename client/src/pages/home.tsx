@@ -40,9 +40,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 
-const WHATSAPP_NUMBER = "+34 XXX XXX XXX";
-const CONTACT_EMAIL = "info@celebratecordoba.com";
-const ADDRESS = "Calle Ejemplo 123, 14001 Córdoba";
+const WHATSAPP_NUMBER = "614994794";
+const CONTACT_EMAIL = "celebratecordoba@gmail.com";
+const ADDRESS = "Calle Letonia 145 5b";
 
 type DayStatus = "available" | "booked" | "blocked" | "booked-morning" | "booked-afternoon";
 
