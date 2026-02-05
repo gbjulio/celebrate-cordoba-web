@@ -624,7 +624,7 @@ function AvailabilityCalendar() {
               Disponibilidad
             </h2>
             <p className="mt-2 text-muted-foreground" data-testid="text-disponibilidad-desc">
-              Selecciona un día para ver el estado. (El panel de administración se añadirá más adelante.)
+              Selecciona un día para ver el estado.
             </p>
 
             <div className="mt-5 glass rounded-3xl p-5" data-testid="card-legend">
@@ -744,7 +744,6 @@ function AvailabilityCalendar() {
               </div>
 
               <div className="mt-5 text-xs text-muted-foreground" data-testid="text-calendar-note">
-                Nota: esto es un mockup. Las reservas reales y la administración se implementarán más adelante.
               </div>
             </div>
           </div>
