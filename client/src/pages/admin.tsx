@@ -13,6 +13,7 @@ import {
   isSameMonth,
   isSameDay,
 } from "date-fns";
+import { es } from "date-fns/locale";
 import { ChevronLeft, ChevronRight, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -297,7 +298,7 @@ export default function AdminPage() {
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <h2 className="text-xl font-bold">
-                {format(currentMonth, "MMMM yyyy", { locale: require("date-fns/locale/es") })}
+                {format(currentMonth, "MMMM yyyy", { locale: es })}
               </h2>
               <Button variant="outline" size="sm" onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>
                 <ChevronRight className="h-4 w-4" />
