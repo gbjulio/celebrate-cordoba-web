@@ -12,6 +12,8 @@ import {
   addDays,
   isSameMonth,
   isSameDay,
+  isBefore,
+  startOfDay,
 } from "date-fns";
 import { es } from "date-fns/locale";
 import { ChevronLeft, ChevronRight, LogOut } from "lucide-react";
@@ -374,21 +376,25 @@ export default function AdminPage() {
             <div className="grid grid-cols-7 gap-2">
               {calendarDays.map((date, idx) => {
                 const dateStr = format(date, "yyyy-MM-dd");
-                const status = getEffectiveStatus(dateStr);
+                const today = startOfDay(new Date());
+                const isPast = isBefore(date, today);
+                const status = isPast ? "blocked" : getEffectiveStatus(dateStr);
                 const inMonth = isSameMonth(date, currentMonth);
-                const hasPendingChange = dateStr in pendingChanges;
+                const hasPendingChange = !isPast && dateStr in pendingChanges;
 
                 const statusColor = legend.find((l) => l.key === status)?.color || legend[0].color;
 
                 return (
                   <button
                     key={idx}
-                    onClick={() => handleDayClick(date)}
+                    onClick={() => !isPast && handleDayClick(date)}
+                    disabled={isPast}
                     className={classNames(
-                      "h-12 rounded-lg border text-sm font-bold transition cursor-pointer hover:brightness-105 relative",
+                      "h-12 rounded-lg border text-sm font-bold transition relative",
                       inMonth ? "" : "opacity-40",
                       statusColor,
-                      hasPendingChange ? "ring-2 ring-yellow-500" : ""
+                      hasPendingChange ? "ring-2 ring-yellow-500" : "",
+                      isPast ? "cursor-not-allowed opacity-50" : "cursor-pointer hover:brightness-105"
                     )}
                   >
                     {format(date, "d")}
