@@ -44,7 +44,7 @@ const WHATSAPP_NUMBER = "+34 XXX XXX XXX";
 const CONTACT_EMAIL = "info@celebratecordoba.com";
 const ADDRESS = "Calle Ejemplo 123, 14001 Córdoba";
 
-type DayStatus = "available" | "booked" | "blocked";
+type DayStatus = "available" | "booked" | "blocked" | "booked-morning" | "booked-afternoon";
 
 function classNames(...parts: Array<string | false | undefined | null>) {
   return parts.filter(Boolean).join(" ");
@@ -574,9 +574,10 @@ function AvailabilityCalendar() {
     const d2 = addDays(today, 7);
     const d3 = addDays(today, 12);
     [d1, d2, d3].forEach((d) => (base[format(d, "yyyy-MM-dd")] = "booked"));
-    base[format(addDays(today, 1), "yyyy-MM-dd")] = "available";
+    base[format(addDays(today, 1), "yyyy-MM-dd")] = "booked-morning";
     base[format(addDays(today, 2), "yyyy-MM-dd")] = "available";
     base[format(addDays(today, 4), "yyyy-MM-dd")] = "available";
+    base[format(addDays(today, 5), "yyyy-MM-dd")] = "booked-afternoon";
     return base;
   }, [today]);
 
@@ -607,6 +608,8 @@ function AvailabilityCalendar() {
   const legend = [
     { key: "available", label: "Disponible", color: "bg-[hsl(140_68%_44%/0.18)] border-[hsl(140_58%_38%/0.35)] text-[hsl(140_48%_28%)]" },
     { key: "booked", label: "Ocupado", color: "bg-[hsl(0_84%_55%/0.14)] border-[hsl(0_74%_48%/0.28)] text-[hsl(0_62%_34%)]" },
+    { key: "booked-morning", label: "Mañana ocupada", color: "bg-[linear-gradient(135deg,hsl(0_84%_55%/0.14)_50%,hsl(140_68%_44%/0.18)_50%)] border-[hsl(0_74%_48%/0.28)] text-[hsl(228_24%_16%)]" },
+    { key: "booked-afternoon", label: "Tarde ocupada", color: "bg-[linear-gradient(135deg,hsl(140_68%_44%/0.18)_50%,hsl(0_84%_55%/0.14)_50%)] border-[hsl(140_58%_38%/0.35)] text-[hsl(228_24%_16%)]" },
     { key: "blocked", label: "No disponible", color: "bg-[hsl(220_14%_56%/0.14)] border-[hsl(220_16%_48%/0.22)] text-[hsl(220_18%_30%)]" },
   ] as const;
 
@@ -697,19 +700,26 @@ function AvailabilityCalendar() {
                   const inMonth = isSameMonth(date, monthStart);
                   const status = statusFor(date);
 
-                  const color =
-                    status === "available"
-                      ? "bg-[hsl(140_68%_44%/0.16)] border-[hsl(140_58%_38%/0.25)]"
-                      : status === "booked"
-                        ? "bg-[hsl(0_84%_55%/0.14)] border-[hsl(0_74%_48%/0.22)]"
-                        : "bg-[hsl(220_14%_56%/0.12)] border-[hsl(220_16%_48%/0.18)]";
+                  let color = "bg-[hsl(220_14%_56%/0.12)] border-[hsl(220_16%_48%/0.18)]"; // blocked default
+                  let textColor = "text-[hsl(220_18%_32%)]";
 
-                  const textColor =
-                    status === "available"
-                      ? "text-[hsl(140_48%_22%)]"
-                      : status === "booked"
-                        ? "text-[hsl(0_62%_30%)]"
-                        : "text-[hsl(220_18%_32%)]";
+                  if (status === "available") {
+                    color = "bg-[hsl(140_68%_44%/0.16)] border-[hsl(140_58%_38%/0.25)]";
+                    textColor = "text-[hsl(140_48%_22%)]";
+                  } else if (status === "booked") {
+                    color = "bg-[hsl(0_84%_55%/0.14)] border-[hsl(0_74%_48%/0.22)]";
+                    textColor = "text-[hsl(0_62%_30%)]";
+                  } else if (status === "booked-morning") {
+                     // Morning booked (red), Afternoon available (green)
+                     // Top-left red, bottom-right green
+                    color = "bg-[linear-gradient(135deg,hsl(0_84%_55%/0.14)_50%,hsl(140_68%_44%/0.16)_50%)] border-[hsl(0_74%_48%/0.22)]";
+                    textColor = "text-foreground";
+                  } else if (status === "booked-afternoon") {
+                     // Morning available (green), Afternoon booked (red)
+                     // Top-left green, bottom-right red
+                    color = "bg-[linear-gradient(135deg,hsl(140_68%_44%/0.16)_50%,hsl(0_84%_55%/0.14)_50%)] border-[hsl(140_58%_38%/0.25)]";
+                    textColor = "text-foreground";
+                  }
 
                   const selected = selectedDay && isSameDay(date, selectedDay);
 
