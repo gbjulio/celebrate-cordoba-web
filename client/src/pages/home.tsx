@@ -796,7 +796,7 @@ function Contact() {
               Contacto
             </h2>
             <p className="mt-2 text-muted-foreground text-center" data-testid="text-contacto-desc">
-              Envíanos los datos y te respondemos lo antes posible.
+              Envíanos un mensaje y te respondemos lo antes posible.
             </p>
 
             <div className="mt-6 glass rounded-3xl p-6 max-w-2xl mx-auto" data-testid="card-contact-info">
