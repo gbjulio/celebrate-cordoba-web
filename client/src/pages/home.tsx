@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
 import {
   Calendar as CalendarIcon,
   Check,
@@ -576,23 +577,34 @@ function Tarifas() {
   );
 }
 
+interface Booking {
+  id: string;
+  date: string;
+  status: DayStatus;
+}
+
 function AvailabilityCalendar() {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(() => startOfMonth(today));
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
 
+  // Fetch bookings from API
+  const { data: bookings = [] } = useQuery<Booking[]>({
+    queryKey: ["/api/bookings"],
+    queryFn: async () => {
+      const res = await fetch("/api/bookings");
+      if (!res.ok) throw new Error("Failed to fetch bookings");
+      return res.json();
+    },
+  });
+
   const booked: Record<string, DayStatus> = useMemo(() => {
     const base: Record<string, DayStatus> = {};
-    const d1 = addDays(today, 3);
-    const d2 = addDays(today, 7);
-    const d3 = addDays(today, 12);
-    [d1, d2, d3].forEach((d) => (base[format(d, "yyyy-MM-dd")] = "booked"));
-    base[format(addDays(today, 1), "yyyy-MM-dd")] = "booked-morning";
-    base[format(addDays(today, 2), "yyyy-MM-dd")] = "available";
-    base[format(addDays(today, 4), "yyyy-MM-dd")] = "available";
-    base[format(addDays(today, 5), "yyyy-MM-dd")] = "booked-afternoon";
+    bookings.forEach((booking: Booking) => {
+      base[booking.date] = booking.status;
+    });
     return base;
-  }, [today]);
+  }, [bookings]);
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
