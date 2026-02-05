@@ -108,7 +108,7 @@ function Nav() {
                   className="text-xs sm:text-sm text-muted-foreground"
                   data-testid="text-tagline"
                 >
-                  Cumpleaños y eventos con magia
+                  Celebraciones y eventos con magia
                 </div>
               </div>
             </div>
@@ -216,7 +216,7 @@ function Hero() {
                 Celebrate Córdoba
               </h1>
               <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-prose" data-testid="text-subtitle">
-                Cumpleaños y eventos con un look adorable, mucho color y cero estrés.
+                Celebraciones de todo tipo con un look cuidado, mucho color y cero estrés.
                 Tú disfruta; nosotros lo hacemos fácil.
               </p>
 
@@ -268,7 +268,7 @@ function Hero() {
               <div className="relative h-full rounded-3xl overflow-hidden border border-border/70 bg-white/70 shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/70" />
                 <div className="p-5">
-                  <div className="font-display text-2xl font-extrabold tracking-tight">El kit del cumple</div>
+                  <div className="font-display text-2xl font-extrabold tracking-tight">Tu kit de celebración</div>
 
                   <div className="mt-3 rounded-2xl overflow-hidden border border-border/70 bg-white/70">
                     <img
@@ -327,11 +327,11 @@ function Presentation() {
         <div className="grid md:grid-cols-12 gap-6 items-start">
           <div className="md:col-span-7">
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-presentacion-title">
-              Un cumple sin estrés (y con mucha diversión)
+              Celebraciones sin estrés (y con mucha ilusión)
             </h2>
             <p className="mt-3 text-muted-foreground text-base sm:text-lg" data-testid="text-presentacion-desc">
-              Celebrate Córdoba es un espacio diseñado para que los peques disfruten y los adultos también.
-              Cuidamos cada detalle para que la celebración sea fácil, bonita y segura.
+              Celebrate Córdoba es un espacio versátil para celebrar cumpleaños, bautizos, baby showers, revelaciones, jubilaciones y mucho más.
+              Cuidamos cada detalle para que tu evento sea fácil, bonito y seguro.
             </p>
 
             <div className="mt-6 grid sm:grid-cols-2 gap-4">
@@ -404,7 +404,7 @@ function Gallery() {
         { label: "Zona de juegos", seed: "juegos" },
         { label: "Mesa dulce", seed: "mesa" },
         { label: "Decoración", seed: "deco" },
-        { label: "Cumples", seed: "cumple" },
+        { label: "Celebraciones", seed: "celebraciones" },
         { label: "Detalles", seed: "detalles" },
         { label: "Familias", seed: "familias" },
         { label: "Fotos", seed: "fotos" },
@@ -476,7 +476,7 @@ function Tarifas() {
       title: "Lunes a jueves · Mañanas",
       time: "10:00 a 14:00",
       price: "50€",
-      details: ["4 horas", "Ideal para cumple temprano", "Consultar servicios incluidos"],
+      details: ["4 horas", "Ideal para celebraciones cortas", "Consultar servicios incluidos"],
     },
     {
       title: "Lunes a jueves · Tardes",
@@ -929,7 +929,7 @@ function Footer() {
               <div>
                 <div className="font-display text-xl font-extrabold tracking-tight">Celebrate Córdoba</div>
                 <div className="text-sm text-muted-foreground" data-testid="text-footer-desc">
-                  Cumpleaños y eventos · Córdoba
+                  Celebraciones y eventos · Córdoba
                 </div>
               </div>
             </div>
