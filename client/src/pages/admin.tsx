@@ -39,8 +39,12 @@ export default function AdminPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [pendingChanges, setPendingChanges] = useState<Record<string, DayStatus | "delete">>({});
+  const [isSaving, setIsSaving] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  const hasChanges = Object.keys(pendingChanges).length > 0;
 
   // Check auth status
   const { data: authData, isLoading: authLoading } = useQuery({
@@ -173,35 +177,89 @@ export default function AdminPage() {
     loginMutation.mutate({ username, password });
   };
 
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    registerMutation.mutate({ username, password });
+  const getEffectiveStatus = (dateStr: string): DayStatus => {
+    if (pendingChanges[dateStr]) {
+      if (pendingChanges[dateStr] === "delete") return "available";
+      return pendingChanges[dateStr] as DayStatus;
+    }
+    const existing = bookings.find((b) => b.date === dateStr);
+    return existing?.status || "available";
   };
 
   const handleDayClick = (date: Date) => {
     const dateStr = format(date, "yyyy-MM-dd");
-    const existing = bookings.find((b) => b.date === dateStr);
+    const currentStatus = getEffectiveStatus(dateStr);
     
-    // Cycle through statuses: available -> booked-morning -> booked-afternoon -> booked -> blocked -> (delete)
-    let newStatus: DayStatus | null = null;
+    // Cycle through statuses: available -> booked-morning -> booked-afternoon -> booked -> blocked -> available
+    let newStatus: DayStatus | "delete";
     
-    if (!existing || existing.status === "available") {
+    if (currentStatus === "available") {
       newStatus = "booked-morning";
-    } else if (existing.status === "booked-morning") {
+    } else if (currentStatus === "booked-morning") {
       newStatus = "booked-afternoon";
-    } else if (existing.status === "booked-afternoon") {
+    } else if (currentStatus === "booked-afternoon") {
       newStatus = "booked";
-    } else if (existing.status === "booked") {
+    } else if (currentStatus === "booked") {
       newStatus = "blocked";
-    } else if (existing.status === "blocked") {
-      // Delete the booking to return to default
-      deleteBookingMutation.mutate(dateStr);
-      return;
+    } else {
+      // blocked -> back to available (mark for delete if it exists in DB)
+      const existsInDb = bookings.find((b) => b.date === dateStr);
+      if (existsInDb) {
+        newStatus = "delete";
+      } else {
+        // Remove from pending changes entirely
+        setPendingChanges((prev) => {
+          const next = { ...prev };
+          delete next[dateStr];
+          return next;
+        });
+        return;
+      }
     }
 
-    if (newStatus) {
-      updateBookingMutation.mutate({ date: dateStr, status: newStatus });
+    // Check if the new status is the same as what's in the DB - if so, remove the pending change
+    const dbStatus = bookings.find((b) => b.date === dateStr)?.status || "available";
+    if (newStatus === dbStatus || (newStatus === "delete" && dbStatus === "available")) {
+      setPendingChanges((prev) => {
+        const next = { ...prev };
+        delete next[dateStr];
+        return next;
+      });
+    } else {
+      setPendingChanges((prev) => ({ ...prev, [dateStr]: newStatus }));
     }
+  };
+
+  const handleSaveChanges = async () => {
+    setIsSaving(true);
+    try {
+      const promises = Object.entries(pendingChanges).map(async ([date, status]) => {
+        if (status === "delete") {
+          const res = await fetch(`/api/bookings/${date}`, { method: "DELETE" });
+          if (!res.ok) throw new Error("Failed to delete booking");
+        } else {
+          const res = await fetch(`/api/bookings/${date}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ status }),
+          });
+          if (!res.ok) throw new Error("Failed to update booking");
+        }
+      });
+      await Promise.all(promises);
+      queryClient.invalidateQueries({ queryKey: ["/api/bookings"] });
+      setPendingChanges({});
+      toast({ title: "Cambios guardados correctamente" });
+    } catch (error) {
+      toast({ title: "Error", description: "No se pudieron guardar los cambios", variant: "destructive" });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleDiscardChanges = () => {
+    setPendingChanges({});
+    toast({ title: "Cambios descartados" });
   };
 
   // Calendar calculation
@@ -316,9 +374,9 @@ export default function AdminPage() {
             <div className="grid grid-cols-7 gap-2">
               {calendarDays.map((date, idx) => {
                 const dateStr = format(date, "yyyy-MM-dd");
-                const booking = bookings.find((b) => b.date === dateStr);
-                const status = booking?.status || "available";
+                const status = getEffectiveStatus(dateStr);
                 const inMonth = isSameMonth(date, currentMonth);
+                const hasPendingChange = dateStr in pendingChanges;
 
                 const statusColor = legend.find((l) => l.key === status)?.color || legend[0].color;
 
@@ -327,16 +385,31 @@ export default function AdminPage() {
                     key={idx}
                     onClick={() => handleDayClick(date)}
                     className={classNames(
-                      "h-12 rounded-lg border text-sm font-bold transition cursor-pointer hover:brightness-105",
+                      "h-12 rounded-lg border text-sm font-bold transition cursor-pointer hover:brightness-105 relative",
                       inMonth ? "" : "opacity-40",
-                      statusColor
+                      statusColor,
+                      hasPendingChange ? "ring-2 ring-yellow-500" : ""
                     )}
                   >
                     {format(date, "d")}
+                    {hasPendingChange && (
+                      <span className="absolute top-1 right-1 w-2 h-2 bg-yellow-500 rounded-full" />
+                    )}
                   </button>
                 );
               })}
             </div>
+
+            {hasChanges && (
+              <div className="mt-4 flex gap-2 justify-end">
+                <Button variant="outline" onClick={handleDiscardChanges} disabled={isSaving}>
+                  Descartar cambios
+                </Button>
+                <Button onClick={handleSaveChanges} disabled={isSaving}>
+                  {isSaving ? "Guardando..." : `Confirmar cambios (${Object.keys(pendingChanges).length})`}
+                </Button>
+              </div>
+            )}
 
             <div className="mt-6 space-y-2">
               <h3 className="font-bold text-sm">Leyenda:</h3>
