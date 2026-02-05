@@ -31,9 +31,8 @@ import {
 
 import logo from "@assets/image_1769815092292.png";
 import tarifasImg from "@assets/image_1769815134263.png";
-import heroBalloons from "@/assets/images/hero-kids.png";
+import heroBalloons from "@/assets/images/hero-balloons.png";
 import partyStickers from "@/assets/images/stickers-party.png";
-import kidsPattern from "@/assets/images/pattern-kids.png";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
