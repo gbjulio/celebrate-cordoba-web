@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Link } from "wouter";
 import {
   Calendar as CalendarIcon,
@@ -392,6 +393,16 @@ function Gallery() {
     [],
   );
 
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   return (
     <section id="instalaciones" className="pt-10 sm:pt-14" data-testid="section-galeria">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -404,36 +415,44 @@ function Gallery() {
           </p>
         </div>
 
-        <div className="mt-6 grid-photos" data-testid="grid-galeria">
-          {photos.map((p, idx) => {
-            const colSpan = [
-              "col-span-12 md:col-span-7",
-              "col-span-12 md:col-span-5",
-              "col-span-12 md:col-span-4",
-              "col-span-12 md:col-span-4",
-              "col-span-12 md:col-span-4",
-              "col-span-12 md:col-span-5",
-              "col-span-12 md:col-span-7",
-              "col-span-12 md:col-span-6",
-            ][idx] ?? "col-span-12 md:col-span-4";
+        <div className="mt-6 relative group" data-testid="carousel-galeria">
+          <div className="overflow-hidden rounded-3xl" ref={emblaRef}>
+            <div className="flex touch-pan-y -ml-4 py-4">
+              {photos.map((p, idx) => (
+                <div className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.33%] pl-4" key={p.seed}>
+                  <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                    <img
+                      alt={p.label}
+                      src={`https://images.unsplash.com/${
+                        idx % 2 === 0 ? "photo-1520975958225-74b8a06b56f4" : "photo-1517457373958-b7bdd4587205"
+                      }?auto=format&fit=crop&w=800&q=80`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <span className="text-white font-bold text-lg">{p.label}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            return (
-              <div
-                key={p.seed}
-                className={classNames("photo-tile", colSpan, "h-48 sm:h-56 md:h-64")}
-                data-testid={`card-foto-${idx}`}
-              >
-                <img
-                  alt={p.label}
-                  src={`https://images.unsplash.com/${
-                    idx % 2 === 0 ? "photo-1520975958225-74b8a06b56f4" : "photo-1517457373958-b7bdd4587205"
-                  }?auto=format&fit=crop&w=1200&q=80`}
-                  loading="lazy"
-                />
-                <div className="photo-label" data-testid={`text-foto-label-${idx}`}>{p.label}</div>
-              </div>
-            );
-          })}
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-center text-foreground hover:bg-white transition-all opacity-0 group-hover:opacity-100 z-10 disabled:opacity-50 cursor-pointer"
+            onClick={scrollPrev}
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-center text-foreground hover:bg-white transition-all opacity-0 group-hover:opacity-100 z-10 disabled:opacity-50 cursor-pointer"
+            onClick={scrollNext}
+            aria-label="Siguiente"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
         </div>
       </div>
     </section>
