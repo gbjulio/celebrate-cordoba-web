@@ -291,32 +291,6 @@ function Hero() {
                   </div>
                 </div>
 
-                <div className="glass rounded-3xl p-6" data-testid="card-portada-logo">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={logo}
-                      alt="Celebrate Córdoba"
-                      className="h-16 w-16 rounded-2xl bg-white/70 p-1"
-                      data-testid="img-portada-logo"
-                    />
-                    <div>
-                      <div className="font-display text-2xl font-extrabold tracking-tight">Celebrate Córdoba</div>
-                      <div className="text-sm text-muted-foreground" data-testid="text-portada-tagline">
-                        Celebraciones y eventos
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 rounded-2xl overflow-hidden border border-border/70 bg-white/70">
-                    <img
-                      src={partyStickers}
-                      alt="Detalles de celebración"
-                      className="w-full h-auto"
-                      loading="lazy"
-                      data-testid="img-portada-stickers"
-                    />
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
