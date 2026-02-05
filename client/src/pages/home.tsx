@@ -931,7 +931,7 @@ function Footer() {
 
           <Separator className="my-5" />
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-foreground">
-            <div data-testid="text-copyright">Copyright © 2024 Celebrate Córdoba</div>
+            <div data-testid="text-copyright">Copyright © 2026 Celebrate Córdoba</div>
             <div className="font-bold" data-testid="text-footer-note">
               Hecho con cariño para celebrar.
             </div>
