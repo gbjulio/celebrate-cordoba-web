@@ -108,9 +108,7 @@ a {
     min-height: 100vh;
     background:
       radial-gradient(980px 640px at 8% -12%, hsl(196 92% 56% / 0.62), transparent 60%),
-      radial-gradient(980px 640px at 104% 6%, hsl(330 92% 70% / 0.58), transparent 62%),
       radial-gradient(980px 640px at 50% 118%, hsl(48 98% 62% / 0.50), transparent 62%),
-      radial-gradient(980px 640px at 108% 72%, hsl(210 80% 64% / 0.14), transparent 64%),
       radial-gradient(980px 640px at -6% 68%, hsl(196 80% 54% / 0.12), transparent 64%),
       radial-gradient(980px 640px at 18% 78%, hsl(260 92% 70% / 0.32), transparent 66%),
       radial-gradient(980px 640px at 84% 116%, hsl(140 68% 44% / 0.30), transparent 66%),
