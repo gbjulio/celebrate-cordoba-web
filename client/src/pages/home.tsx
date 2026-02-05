@@ -175,6 +175,8 @@ function Nav() {
 }
 
 function Hero() {
+  const waHref = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}`;
+
   return (
     <section id="inicio" className="pt-8 sm:pt-10" data-testid="section-hero">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -183,131 +185,136 @@ function Hero() {
             <img
               src={heroBalloons}
               alt="Fondo de globos"
-              className="absolute inset-0 h-full w-full object-cover opacity-[0.35]"
+              className="absolute inset-0 h-full w-full object-cover opacity-[0.28]"
               loading="lazy"
               data-testid="img-hero-bg"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/30 to-white/85" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/35 to-white/88" />
           </div>
 
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-24 -left-28 h-80 w-80 rounded-full bg-[hsl(196_92%_52%/0.40)] blur-3xl" />
-            <div className="absolute -top-20 -right-28 h-80 w-80 rounded-full bg-[hsl(340_92%_68%/0.40)] blur-3xl" />
-            <div className="absolute -bottom-28 left-1/3 h-80 w-80 rounded-full bg-[hsl(48_98%_62%/0.34)] blur-3xl" />
+            <div className="absolute -top-24 -left-28 h-80 w-80 rounded-full bg-[hsl(196_92%_52%/0.36)] blur-3xl" />
+            <div className="absolute -top-20 -right-28 h-80 w-80 rounded-full bg-[hsl(340_92%_68%/0.36)] blur-3xl" />
+            <div className="absolute -bottom-28 left-1/3 h-80 w-80 rounded-full bg-[hsl(48_98%_62%/0.30)] blur-3xl" />
           </div>
 
           <div className="relative grid md:grid-cols-12 gap-6 p-6 sm:p-9">
             <motion.div
-              className="md:col-span-7"
+              className="md:col-span-6"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: "easeOut" }}
             >
               <div className="inline-flex items-center gap-2 sticker px-3 py-1.5 text-sm font-extrabold" data-testid="badge-hero">
                 <Sparkles className="h-4 w-4 text-[hsl(340_92%_60%)]" />
-                ¡Hora de celebrar!
+                Celebrate Córdoba
               </div>
 
               <h1
                 className="mt-4 font-display text-4xl sm:text-6xl leading-[1.00] font-extrabold tracking-tight"
                 data-testid="text-title"
               >
-                Celebrate Córdoba
+                Celebraciones con estilo
               </h1>
               <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-prose" data-testid="text-subtitle">
-                Celebraciones de todo tipo con un look cuidado, mucho color y cero estrés.
-                Tú disfruta; nosotros lo hacemos fácil.
+                Cumpleaños, bautizos, baby showers, revelaciones, jubilaciones y mucho más.
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <Button
+                  onClick={() => scrollToId("contacto")}
+                  className="rounded-full font-extrabold party-bounce"
+                  data-testid="button-portada-contacto"
+                >
+                  Contactar
+                  <Send className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="secondary"
                   onClick={() => scrollToId("disponibilidad")}
                   className="rounded-full font-extrabold party-bounce"
-                  data-testid="button-ver-disponibilidad"
+                  data-testid="button-portada-disponibilidad"
                 >
                   <CalendarIcon className="h-4 w-4" />
                   Ver disponibilidad
                 </Button>
-
-                <Button
-                  variant="secondary"
-                  onClick={() => scrollToId("tarifas")}
-                  className="rounded-full font-extrabold party-bounce"
-                  data-testid="button-ver-tarifas"
-                >
-                  Ver tarifas
-                </Button>
-              </div>
-
-              <div className="mt-7 grid sm:grid-cols-3 gap-3">
-                {[
-                  { title: "Instalaciones", desc: "Salón + zona de juegos", icon: Star },
-                  { title: "Decoración", desc: "Detalles listos para fotos", icon: Sparkles },
-                  { title: "Reserva fácil", desc: "En pocos pasos", icon: Check },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl border border-border/70 bg-white/75 p-4 shadow-sm hover:shadow transition"
-                    data-testid={`card-hero-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  >
-                    <item.icon className="h-5 w-5 text-[hsl(196_92%_46%)]" />
-                    <div className="mt-2 font-extrabold tracking-tight">{item.title}</div>
-                    <div className="text-sm text-muted-foreground">{item.desc}</div>
-                  </div>
-                ))}
               </div>
             </motion.div>
 
             <motion.div
-              className="md:col-span-5"
+              className="md:col-span-6"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
             >
-              <div className="relative h-full rounded-3xl overflow-hidden border border-border/70 bg-white/70 shadow-sm">
-                <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/70" />
-                <div className="p-5">
-                  <div className="font-display text-2xl font-extrabold tracking-tight">Tu kit de celebración</div>
+              <div className="grid gap-4">
+                <div className="glass rounded-3xl p-6" data-testid="card-portada-contacto">
+                  <div className="font-display text-2xl font-extrabold tracking-tight">Contacto</div>
+                  <div className="mt-4 grid gap-3 text-sm">
+                    <div className="flex items-start gap-3" data-testid="row-portada-address">
+                      <MapPin className="h-5 w-5 text-[hsl(196_92%_46%)] mt-0.5" />
+                      <div>
+                        <div className="font-extrabold tracking-tight">Dirección</div>
+                        <div className="text-muted-foreground" data-testid="text-portada-address">{ADDRESS}</div>
+                      </div>
+                    </div>
 
-                  <div className="mt-3 rounded-2xl overflow-hidden border border-border/70 bg-white/70">
+                    <div className="flex items-start gap-3" data-testid="row-portada-whatsapp">
+                      <MessageCircle className="h-5 w-5 text-[hsl(330_92%_60%)] mt-0.5" />
+                      <div>
+                        <div className="font-extrabold tracking-tight">WhatsApp</div>
+                        <a
+                          className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                          href={waHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          data-testid="link-portada-whatsapp"
+                        >
+                          {WHATSAPP_NUMBER}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3" data-testid="row-portada-email">
+                      <Phone className="h-5 w-5 text-[hsl(48_98%_44%)] mt-0.5" />
+                      <div>
+                        <div className="font-extrabold tracking-tight">Email</div>
+                        <a
+                          className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                          href={`mailto:${CONTACT_EMAIL}`}
+                          data-testid="link-portada-email"
+                        >
+                          {CONTACT_EMAIL}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="glass rounded-3xl p-6" data-testid="card-portada-logo">
+                  <div className="flex items-center gap-4">
                     <img
-                      src={partyStickers}
-                      alt="Stickers de fiesta"
-                      className="w-full h-auto"
-                      loading="lazy"
-                      data-testid="img-party-stickers"
+                      src={logo}
+                      alt="Celebrate Córdoba"
+                      className="h-16 w-16 rounded-2xl bg-white/70 p-1"
+                      data-testid="img-portada-logo"
                     />
+                    <div>
+                      <div className="font-display text-2xl font-extrabold tracking-tight">Celebrate Córdoba</div>
+                      <div className="text-sm text-muted-foreground" data-testid="text-portada-tagline">
+                        Celebraciones y eventos
+                      </div>
+                    </div>
                   </div>
 
-                  <ul className="mt-4 grid gap-2 text-sm">
-                    {[
-                      "Atención personalizada",
-                      "Espacio cómodo para familias",
-                      "Opciones por mañana / tarde / día completo",
-                      "Hora suelta y extras",
-                    ].map((t, idx) => (
-                      <li key={t} className="flex items-start gap-2" data-testid={`list-hero-${idx}`}>
-                        <span className="mt-0.5 h-5 w-5 rounded-full bg-[hsl(48_98%_62%/0.45)] border border-border grid place-items-center">
-                          <Check className="h-3.5 w-3.5 text-foreground" />
-                        </span>
-                        <span className="text-foreground/85">{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-5 rounded-2xl border border-border/70 bg-white/75 p-4">
-                    <div className="text-xs font-extrabold text-muted-foreground">Reserva rápida</div>
-                    <div className="mt-1 font-extrabold tracking-tight" data-testid="text-cta-mini">
-                      Elige fecha, envía consulta y te confirmamos.
-                    </div>
-                    <Button
-                      className="mt-3 w-full rounded-full font-extrabold party-bounce"
-                      onClick={() => scrollToId("contacto")}
-                      data-testid="button-cta-contacto"
-                    >
-                      Enviar consulta
-                      <Send className="h-4 w-4" />
-                    </Button>
+                  <div className="mt-4 rounded-2xl overflow-hidden border border-border/70 bg-white/70">
+                    <img
+                      src={partyStickers}
+                      alt="Detalles de celebración"
+                      className="w-full h-auto"
+                      loading="lazy"
+                      data-testid="img-portada-stickers"
+                    />
                   </div>
                 </div>
               </div>
