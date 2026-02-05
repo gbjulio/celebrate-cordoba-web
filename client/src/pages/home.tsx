@@ -720,7 +720,7 @@ function AvailabilityCalendar() {
                 )}
               </div>
 
-              {selectedDay && selectedStatus !== 'blocked' && (
+              {selectedDay && selectedStatus !== 'blocked' && selectedStatus !== 'booked' && (
                 <div className="mt-3 flex justify-center">
                   <Button
                     className="rounded-full font-extrabold"
