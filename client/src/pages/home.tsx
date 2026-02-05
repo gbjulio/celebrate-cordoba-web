@@ -491,19 +491,19 @@ function Tarifas() {
       details: ["12 horas", "Más tiempo para disfrutar", "Consultar servicios incluidos"],
     },
     {
-      title: "Vie-Sáb-Dom + vísperas de festivos + festivos · Mañanas",
+      title: "Vie-Sáb-Dom / vísperas de festivos / festivos · Mañanas",
       time: "10:00 a 14:00",
       price: "80€",
       details: ["4 horas", "Fin de semana", "Consultar servicios incluidos"],
     },
     {
-      title: "Vie-Sáb-Dom + vísperas de festivos + festivos · Tardes",
+      title: "Vie-Sáb-Dom / vísperas de festivos / festivos · Tardes",
       time: "16:00 a 23:00",
       price: "120€",
       details: ["7 horas", "Horario extendido", "Consultar servicios incluidos"],
     },
     {
-      title: "Vie-Sáb-Dom + vísperas de festivos + festivos · Día completo",
+      title: "Vie-Sáb-Dom / vísperas de festivos / festivos · Día completo",
       time: "10:00 a 23:00",
       price: "145€",
       details: ["13 horas", "Todo el día", "Consultar servicios incluidos"],
