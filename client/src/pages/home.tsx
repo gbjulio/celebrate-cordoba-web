@@ -917,7 +917,9 @@ function Footer() {
 
             <div className="flex items-center gap-2">
               <a
-                href="#"
+                href="https://www.instagram.com/celebratecordoba/"
+                target="_blank"
+                rel="noreferrer"
                 className="bubble h-11 w-11 grid place-items-center hover:bg-white/90 transition"
                 aria-label="Instagram"
                 data-testid="link-instagram"
