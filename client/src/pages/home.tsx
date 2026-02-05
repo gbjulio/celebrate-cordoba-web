@@ -619,48 +619,15 @@ function AvailabilityCalendar() {
     <section id="disponibilidad" className="pt-10 sm:pt-14" data-testid="section-disponibilidad">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid md:grid-cols-12 gap-6 items-start">
-          <div className="md:col-span-5">
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-disponibilidad-title">
+          <div className="md:col-span-12">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-center" data-testid="text-disponibilidad-title">
               Disponibilidad
             </h2>
-            <p className="mt-2 text-muted-foreground" data-testid="text-disponibilidad-desc">
+            <p className="mt-2 text-muted-foreground text-center" data-testid="text-disponibilidad-desc">
               Selecciona un día para ver el estado.
             </p>
 
-            <div className="mt-5 glass rounded-3xl p-5" data-testid="card-legend">
-              <div className="text-sm font-extrabold tracking-tight">Leyenda</div>
-              <div className="mt-3 grid gap-2">
-                {legend.map((l) => (
-                  <div key={l.key} className="flex items-center justify-between" data-testid={`row-legend-${l.key}`}>
-                    <div className="flex items-center gap-2">
-                      <span className={classNames("h-4 w-4 rounded-md border", l.color)} />
-                      <span className="text-sm font-bold text-foreground/85">{l.label}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Separator className="my-4" />
-              <div className="text-sm text-muted-foreground" data-testid="text-selected-day">
-                {selectedDay ? (
-                  <span>
-                    <span className="font-extrabold text-foreground">{format(selectedDay, "dd/MM/yyyy")}</span> · {legend.find((x) => x.key === selectedStatus)?.label}
-                  </span>
-                ) : (
-                  "Elige un día para ver detalles."
-                )}
-              </div>
-              <Button
-                className="mt-4 w-full rounded-full font-extrabold"
-                onClick={() => scrollToId("contacto")}
-                data-testid="button-consultar-fecha"
-              >
-                Consultar esta fecha
-              </Button>
-            </div>
-          </div>
-
-          <div className="md:col-span-7">
-            <div className="glass rounded-[28px] p-5 sm:p-6" data-testid="card-calendar">
+            <div className="mt-6 glass rounded-[28px] p-5 sm:p-6 max-w-2xl mx-auto" data-testid="card-calendar">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-xs font-extrabold text-muted-foreground">Mes</div>
@@ -743,7 +710,37 @@ function AvailabilityCalendar() {
                 })}
               </div>
 
-              <div className="mt-5 text-xs text-muted-foreground" data-testid="text-calendar-note">
+              <div className="mt-5 text-sm text-muted-foreground text-center" data-testid="text-selected-day">
+                {selectedDay ? (
+                  <span>
+                    <span className="font-extrabold text-foreground">{format(selectedDay, "dd/MM/yyyy")}</span> · {legend.find((x) => x.key === selectedStatus)?.label}
+                  </span>
+                ) : (
+                  "Elige un día para ver detalles."
+                )}
+              </div>
+
+              {selectedDay && (
+                <div className="mt-3 flex justify-center">
+                  <Button
+                    className="rounded-full font-extrabold"
+                    onClick={() => scrollToId("contacto")}
+                    data-testid="button-consultar-fecha"
+                  >
+                    Consultar esta fecha
+                  </Button>
+                </div>
+              )}
+
+              <Separator className="my-5" />
+
+              <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center">
+                {legend.map((l) => (
+                  <div key={l.key} className="flex items-center gap-1.5" data-testid={`row-legend-${l.key}`}>
+                    <span className={classNames("h-3 w-3 rounded-full border", l.color)} />
+                    <span className="text-xs font-bold text-muted-foreground">{l.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
