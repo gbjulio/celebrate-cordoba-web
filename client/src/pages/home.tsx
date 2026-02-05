@@ -417,7 +417,7 @@ function Gallery() {
             Instalaciones
           </h2>
           <p className="mt-2 text-muted-foreground" data-testid="text-galeria-desc">
-            Una muestra de cómo se vive Celebrate Córdoba. (Imágenes de ejemplo — aquí irán tus fotos reales.)
+            Una muestra de cómo se vive Celebrate Córdoba.
           </p>
         </div>
 
