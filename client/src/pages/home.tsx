@@ -498,7 +498,7 @@ function Tarifas() {
             Tarifas
           </h2>
           <p className="mt-2 text-muted-foreground" data-testid="text-tarifas-desc">
-            Paquetes claros y sin sorpresas. Puedes reservar por mañana, tarde o día completo.
+            Paquetes claros y sin sorpresas. Mañana, tarde o día completo.
           </p>
 
           <div
@@ -527,13 +527,6 @@ function Tarifas() {
                         {p.price}
                       </div>
                     </div>
-                    <Button
-                      className="rounded-full font-extrabold"
-                      onClick={() => scrollToId("contacto")}
-                      data-testid={`button-reservar-paquete-${idx}`}
-                    >
-                      Reservar
-                    </Button>
                   </div>
                   <ul className="mt-4 grid gap-2 text-sm">
                     {p.details.map((d, i) => (
