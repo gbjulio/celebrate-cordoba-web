@@ -395,23 +395,13 @@ function Gallery() {
   return (
     <section id="instalaciones" className="pt-10 sm:pt-14" data-testid="section-galeria">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-galeria-title">
-              Instalaciones
-            </h2>
-            <p className="mt-2 text-muted-foreground" data-testid="text-galeria-desc">
-              Una muestra de cómo se vive Celebrate Córdoba. (Imágenes de ejemplo — aquí irán tus fotos reales.)
-            </p>
-          </div>
-          <Button
-            variant="secondary"
-            className="hidden sm:inline-flex rounded-full font-extrabold"
-            onClick={() => scrollToId("contacto")}
-            data-testid="button-galeria-contactar"
-          >
-            Quiero reservar
-          </Button>
+        <div>
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-galeria-title">
+            Instalaciones
+          </h2>
+          <p className="mt-2 text-muted-foreground" data-testid="text-galeria-desc">
+            Una muestra de cómo se vive Celebrate Córdoba. (Imágenes de ejemplo — aquí irán tus fotos reales.)
+          </p>
         </div>
 
         <div className="mt-6 grid-photos" data-testid="grid-galeria">
