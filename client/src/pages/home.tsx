@@ -99,6 +99,17 @@ function Nav() {
                 className="h-16 w-16 sm:h-20 sm:w-20 rounded-3xl bg-white/70 p-2"
                 data-testid="img-logo"
               />
+              <div className="leading-tight">
+                <div className="font-display text-lg sm:text-xl font-extrabold tracking-tight">
+                  Celebrate Córdoba
+                </div>
+                <div
+                  className="text-xs sm:text-sm text-muted-foreground"
+                  data-testid="text-tagline"
+                >
+                  Celebraciones y eventos con magia
+                </div>
+              </div>
             </div>
 
             <nav className="hidden md:flex items-center gap-1">
