@@ -179,7 +179,7 @@ function Hero() {
   return (
     <section id="inicio" className="pt-8 sm:pt-10" data-testid="section-hero">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-[32px] border border-border/70 soft-card">
+        <div className="relative overflow-hidden rounded-[32px] border border-border/70 glass">
           <div className="absolute inset-0">
             <img
               src={heroBalloons}
@@ -353,7 +353,7 @@ function Presentation() {
                   desc: "Te guiamos para elegir la opción ideal según tu plan.",
                 },
               ].map((v) => (
-                <div key={v.title} className="soft-card rounded-2xl p-5" data-testid={`card-valor-${v.title.toLowerCase().replace(/\s+/g, "-")}`}>
+                <div key={v.title} className="glass rounded-2xl p-5" data-testid={`card-valor-${v.title.toLowerCase().replace(/\s+/g, "-")}`}>
                   <div className="font-extrabold tracking-tight">{v.title}</div>
                   <div className="mt-1 text-sm text-muted-foreground">{v.desc}</div>
                 </div>
@@ -524,7 +524,7 @@ function Tarifas() {
 
             <div className="mt-5 grid gap-4" data-testid="grid-paquetes">
               {paquetes.map((p, idx) => (
-                <Card key={p.title} className="rounded-3xl border-border/70 shadow-sm" data-testid={`card-paquete-${idx}`}>
+                <Card key={p.title} className="glass rounded-3xl border-border/70 shadow-sm" data-testid={`card-paquete-${idx}`}>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base sm:text-lg font-extrabold tracking-tight">
                       {p.title}
@@ -579,7 +579,7 @@ function Tarifas() {
           </div>
 
           <div className="md:col-span-6">
-            <div className="soft-card rounded-[28px] overflow-hidden" data-testid="card-tarifas-img">
+            <div className="glass rounded-[28px] overflow-hidden" data-testid="card-tarifas-img">
               <div className="p-5 sm:p-6 flex items-center justify-between">
                 <div>
                   <div className="font-extrabold tracking-tight">Tarifa oficial</div>
@@ -697,7 +697,7 @@ function AvailabilityCalendar() {
           </div>
 
           <div className="md:col-span-7">
-            <div className="soft-card rounded-[28px] p-5 sm:p-6" data-testid="card-calendar">
+            <div className="glass rounded-[28px] p-5 sm:p-6" data-testid="card-calendar">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-xs font-extrabold text-muted-foreground">Mes</div>
@@ -865,7 +865,7 @@ function Contact() {
           <div className="md:col-span-7">
             <form
               onSubmit={onSubmit}
-              className="soft-card rounded-[28px] p-5 sm:p-6"
+              className="glass rounded-[28px] p-5 sm:p-6"
               data-testid="form-contacto"
             >
               <div className="grid sm:grid-cols-2 gap-4">
