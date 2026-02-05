@@ -34,6 +34,14 @@ import logo from "@assets/image_1769815092292.png";
 import heroBalloons from "@/assets/images/hero-balloons.png";
 import partyStickers from "@/assets/images/stickers-party.png";
 
+// Gallery Images
+import imgSalon from "@/assets/images/venue-salon.jpg";
+import imgPlayground from "@/assets/images/venue-playground.jpg";
+import imgCandyBar from "@/assets/images/venue-candybar.jpg";
+import imgDecoration from "@/assets/images/venue-decoration.jpg";
+import imgFamily from "@/assets/images/venue-family.jpg";
+import imgKitchen from "@/assets/images/venue-kitchen.jpg";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -381,14 +389,12 @@ function Gallery() {
   const photos = useMemo(
     () =>
       [
-        { label: "Salón principal", seed: "salon" },
-        { label: "Zona de juegos", seed: "juegos" },
-        { label: "Mesa dulce", seed: "mesa" },
-        { label: "Decoración", seed: "deco" },
-        { label: "Celebraciones", seed: "celebraciones" },
-        { label: "Detalles", seed: "detalles" },
-        { label: "Familias", seed: "familias" },
-        { label: "Fotos", seed: "fotos" },
+        { label: "Salón principal", seed: "salon", src: imgSalon },
+        { label: "Zona de juegos", seed: "juegos", src: imgPlayground },
+        { label: "Mesa dulce", seed: "mesa", src: imgCandyBar },
+        { label: "Decoración", seed: "deco", src: imgDecoration },
+        { label: "Celebraciones", seed: "celebraciones", src: imgFamily },
+        { label: "Cocina y Detalles", seed: "detalles", src: imgKitchen },
       ] as const,
     [],
   );
@@ -423,9 +429,7 @@ function Gallery() {
                   <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
                     <img
                       alt={p.label}
-                      src={`https://images.unsplash.com/${
-                        idx % 2 === 0 ? "photo-1520975958225-74b8a06b56f4" : "photo-1517457373958-b7bdd4587205"
-                      }?auto=format&fit=crop&w=800&q=80`}
+                      src={p.src}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                     />
