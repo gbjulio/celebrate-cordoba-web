@@ -106,7 +106,13 @@ a {
   .celebrate-shell {
     position: relative;
     min-height: 100vh;
-    background: hsl(0 0% 100%);
+    background:
+      radial-gradient(1200px 740px at 52% 38%, hsl(190 90% 82% / 0.95), transparent 62%),
+      radial-gradient(1100px 760px at 8% 18%, hsl(340 92% 84% / 0.88), transparent 58%),
+      radial-gradient(980px 720px at 92% 22%, hsl(46 98% 80% / 0.80), transparent 58%),
+      radial-gradient(860px 620px at 18% 86%, hsl(210 92% 78% / 0.78), transparent 60%),
+      radial-gradient(840px 620px at 86% 88%, hsl(280 82% 84% / 0.62), transparent 62%),
+      linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
   }
 
   .celebrate-shell::before {
@@ -114,17 +120,16 @@ a {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.56;
+    opacity: 0.46;
     background-image:
-      radial-gradient(circle at 14px 16px, hsl(330 92% 64% / 0.64) 2.1px, transparent 2.5px),
-      radial-gradient(circle at 34px 34px, hsl(196 92% 46% / 0.58) 2.0px, transparent 2.4px),
-      radial-gradient(circle at 54px 18px, hsl(48 98% 60% / 0.62) 2.2px, transparent 2.6px),
-      radial-gradient(circle at 18px 52px, hsl(140 68% 44% / 0.54) 2.0px, transparent 2.4px),
-      radial-gradient(circle at 68px 68px, hsl(260 92% 70% / 0.48) 2.0px, transparent 2.4px),
-      radial-gradient(circle at 80px 22px, hsl(18 92% 62% / 0.44) 1.9px, transparent 2.3px),
-      radial-gradient(circle at 92px 46px, hsl(196 92% 56% / 0.40) 1.9px, transparent 2.3px);
-    background-size: 36px 36px;
-    mix-blend-mode: multiply;
+      radial-gradient(circle at 18px 18px, hsl(330 92% 70% / 0.58) 2.1px, transparent 2.6px),
+      radial-gradient(circle at 40px 36px, hsl(196 92% 56% / 0.50) 2.0px, transparent 2.5px),
+      radial-gradient(circle at 58px 18px, hsl(48 98% 62% / 0.56) 2.2px, transparent 2.8px),
+      radial-gradient(circle at 20px 54px, hsl(260 92% 74% / 0.38) 1.9px, transparent 2.4px),
+      radial-gradient(circle at 72px 68px, hsl(210 92% 60% / 0.34) 1.9px, transparent 2.4px),
+      radial-gradient(circle at 84px 26px, hsl(18 92% 66% / 0.34) 1.8px, transparent 2.3px);
+    background-size: 42px 42px;
+    mix-blend-mode: soft-light;
   }
 
   .celebrate-shell::after {
