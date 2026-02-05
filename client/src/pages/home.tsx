@@ -818,6 +818,12 @@ function Contact() {
               </div>
 
               <Separator className="my-6" />
+
+              <div className="mb-4 text-center">
+                <h3 className="font-display text-xl font-bold tracking-tight text-[hsl(196_92%_46%)]">
+                  ¿Dónde estamos?
+                </h3>
+              </div>
               
               <div className="rounded-2xl overflow-hidden border border-[hsl(var(--primary)/0.2)]" data-testid="map-container">
                 <iframe 
