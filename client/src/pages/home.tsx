@@ -737,10 +737,16 @@ function AvailabilityCalendar() {
                 <div className="mt-3 flex justify-center">
                   <Button
                     className="rounded-full font-extrabold"
-                    onClick={() => scrollToId("contacto")}
+                    asChild
                     data-testid="button-consultar-fecha"
                   >
-                    Consultar esta fecha
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}?text=Quiero%20reservar%20para%20el%20dia%20${format(selectedDay, "dd/MM/yyyy")}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Consultar esta fecha
+                    </a>
                   </Button>
                 </div>
               )}
