@@ -772,30 +772,34 @@ function Contact() {
     <section id="contacto" className="pt-10 sm:pt-14 pb-12" data-testid="section-contacto">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid md:grid-cols-12 gap-6 items-start">
-          <div className="md:col-span-5">
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-contacto-title">
+          <div className="md:col-span-12">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-center" data-testid="text-contacto-title">
               Contacto
             </h2>
-            <p className="mt-2 text-muted-foreground" data-testid="text-contacto-desc">
+            <p className="mt-2 text-muted-foreground text-center" data-testid="text-contacto-desc">
               Envíanos los datos y te respondemos lo antes posible.
             </p>
 
-            <div className="mt-5 glass rounded-3xl p-5" data-testid="card-contact-info">
-              <div className="grid gap-3 text-sm">
-                <div className="flex items-start gap-3" data-testid="row-address">
-                  <MapPin className="h-5 w-5 text-[hsl(196_92%_46%)] mt-0.5" />
+            <div className="mt-6 glass rounded-3xl p-6 max-w-2xl mx-auto" data-testid="card-contact-info">
+              <div className="grid gap-4 text-base">
+                <div className="flex items-start gap-4" data-testid="row-address">
+                  <span className="h-10 w-10 rounded-xl bg-[hsl(196_92%_46%/0.14)] grid place-items-center shrink-0">
+                    <MapPin className="h-5 w-5 text-[hsl(196_92%_46%)]" />
+                  </span>
                   <div>
-                    <div className="font-extrabold tracking-tight">Dirección</div>
+                    <div className="font-extrabold tracking-tight text-lg">Dirección</div>
                     <div className="text-muted-foreground" data-testid="text-address">{ADDRESS}</div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3" data-testid="row-whatsapp">
-                  <MessageCircle className="h-5 w-5 text-[hsl(340_92%_60%)] mt-0.5" />
+                <div className="flex items-start gap-4" data-testid="row-whatsapp">
+                  <span className="h-10 w-10 rounded-xl bg-[hsl(340_92%_60%/0.14)] grid place-items-center shrink-0">
+                    <MessageCircle className="h-5 w-5 text-[hsl(340_92%_60%)]" />
+                  </span>
                   <div>
-                    <div className="font-extrabold tracking-tight">WhatsApp</div>
+                    <div className="font-extrabold tracking-tight text-lg">WhatsApp</div>
                     <a
-                      className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                      className="text-muted-foreground underline underline-offset-4 hover:text-foreground block"
                       href={waHref}
                       target="_blank"
                       rel="noreferrer"
@@ -806,12 +810,14 @@ function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3" data-testid="row-email">
-                  <Phone className="h-5 w-5 text-[hsl(48_98%_44%)] mt-0.5" />
+                <div className="flex items-start gap-4" data-testid="row-email">
+                  <span className="h-10 w-10 rounded-xl bg-[hsl(48_98%_44%/0.14)] grid place-items-center shrink-0">
+                    <Phone className="h-5 w-5 text-[hsl(48_98%_44%)]" />
+                  </span>
                   <div>
-                    <div className="font-extrabold tracking-tight">Email</div>
+                    <div className="font-extrabold tracking-tight text-lg">Email</div>
                     <a
-                      className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                      className="text-muted-foreground underline underline-offset-4 hover:text-foreground block"
                       href={`mailto:${CONTACT_EMAIL}`}
                       data-testid="link-email"
                     >
@@ -821,62 +827,11 @@ function Contact() {
                 </div>
               </div>
 
-              <Separator className="my-4" />
-              <div className="text-xs text-muted-foreground" data-testid="text-contact-note">
+              <Separator className="my-6" />
+              <div className="text-sm text-center text-muted-foreground" data-testid="text-contact-note">
                 También puedes escribirnos por WhatsApp para consultas rápidas.
               </div>
             </div>
-          </div>
-
-          <div className="md:col-span-7">
-            <form
-              onSubmit={onSubmit}
-              className="glass rounded-[28px] p-5 sm:p-6"
-              data-testid="form-contacto"
-            >
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="name">Nombre completo</Label>
-                  <Input id="name" required placeholder="Tu nombre" className="rounded-2xl" data-testid="input-nombre" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" required placeholder="tu@email.com" className="rounded-2xl" data-testid="input-email" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="phone">Teléfono</Label>
-                  <Input id="phone" placeholder="Tu teléfono" className="rounded-2xl" data-testid="input-telefono" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="date">Fecha deseada</Label>
-                  <Input id="date" type="date" className="rounded-2xl" data-testid="input-fecha" />
-                </div>
-                <div className="grid gap-2 sm:col-span-2">
-                  <Label htmlFor="guests">Número de invitados</Label>
-                  <Input id="guests" type="number" min={1} placeholder="Ej: 18" className="rounded-2xl" data-testid="input-invitados" />
-                </div>
-                <div className="grid gap-2 sm:col-span-2">
-                  <Label htmlFor="message">Mensaje / comentarios</Label>
-                  <Textarea id="message" placeholder="Cuéntanos qué tienes en mente..." className="min-h-28 rounded-2xl" data-testid="input-mensaje" />
-                </div>
-              </div>
-
-              <div className="mt-5 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-                <Button className="rounded-full font-extrabold" type="submit" data-testid="button-enviar">
-                  Enviar
-                  <Send className="h-4 w-4" />
-                </Button>
-                <div
-                  className={classNames(
-                    "text-sm font-bold",
-                    sent ? "text-[hsl(140_48%_28%)]" : "text-muted-foreground",
-                  )}
-                  data-testid="status-form"
-                >
-                  {sent ? "¡Listo! Recibimos tu consulta (mockup)." : "No guardamos datos en este prototipo."}
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
