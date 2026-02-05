@@ -97,7 +97,7 @@ function Nav() {
               <img
                 src={logo}
                 alt="Celebrate Córdoba"
-                className="h-11 w-11 rounded-xl bg-white/70 p-1"
+                className="h-11 w-11 rounded-xl bg-white p-1"
                 data-testid="img-logo"
               />
               <div className="leading-tight">
@@ -137,7 +137,7 @@ function Nav() {
                 Reservar
               </Button>
               <button
-                className="md:hidden bubble h-11 w-11 grid place-items-center hover:bg-white/90 transition focus-ring"
+                className="md:hidden bubble h-11 w-11 grid place-items-center hover:bg-white transition focus-ring"
                 onClick={() => setOpen((v) => !v)}
                 aria-expanded={open}
                 aria-label="Abrir menú"
@@ -248,7 +248,7 @@ function Hero() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-border/70 bg-white/75 p-4 shadow-sm hover:shadow transition"
+                    className="rounded-2xl border border-border/70 bg-white p-4 shadow-sm hover:shadow transition"
                     data-testid={`card-hero-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     <item.icon className="h-5 w-5 text-[hsl(196_92%_46%)]" />
@@ -265,12 +265,12 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
             >
-              <div className="relative h-full rounded-3xl overflow-hidden border border-border/70 bg-white/70 shadow-sm">
+              <div className="relative h-full rounded-3xl overflow-hidden border border-border/70 bg-white shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/70" />
                 <div className="p-5">
                   <div className="font-display text-2xl font-extrabold tracking-tight">Tu kit de celebración</div>
 
-                  <div className="mt-3 rounded-2xl overflow-hidden border border-border/70 bg-white/70">
+                  <div className="mt-3 rounded-2xl overflow-hidden border border-border/70 bg-white">
                     <img
                       src={partyStickers}
                       alt="Stickers de fiesta"
@@ -296,7 +296,7 @@ function Hero() {
                     ))}
                   </ul>
 
-                  <div className="mt-5 rounded-2xl border border-border/70 bg-white/75 p-4">
+                  <div className="mt-5 rounded-2xl border border-border/70 bg-white p-4">
                     <div className="text-xs font-extrabold text-muted-foreground">Reserva rápida</div>
                     <div className="mt-1 font-extrabold tracking-tight" data-testid="text-cta-mini">
                       Elige fecha, envía consulta y te confirmamos.
@@ -925,7 +925,7 @@ function Footer() {
         <div className="glass rounded-3xl p-6">
           <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="Celebrate Córdoba" className="h-12 w-12 rounded-2xl bg-white/70 p-1" data-testid="img-footer-logo" />
+              <img src={logo} alt="Celebrate Córdoba" className="h-12 w-12 rounded-2xl bg-white p-1" data-testid="img-footer-logo" />
               <div>
                 <div className="font-display text-xl font-extrabold tracking-tight">Celebrate Córdoba</div>
                 <div className="text-sm text-muted-foreground" data-testid="text-footer-desc">
@@ -952,7 +952,7 @@ function Footer() {
             <div className="flex items-center gap-2">
               <a
                 href="#"
-                className="bubble h-11 w-11 grid place-items-center hover:bg-white/90 transition"
+                className="bubble h-11 w-11 grid place-items-center hover:bg-white transition"
                 aria-label="Instagram"
                 data-testid="link-instagram"
               >
@@ -960,7 +960,7 @@ function Footer() {
               </a>
               <a
                 href="#"
-                className="bubble h-11 w-11 grid place-items-center hover:bg-white/90 transition"
+                className="bubble h-11 w-11 grid place-items-center hover:bg-white transition"
                 aria-label="Facebook"
                 data-testid="link-facebook"
               >
