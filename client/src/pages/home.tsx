@@ -129,7 +129,7 @@ function Nav() {
 
             <div className="flex items-center gap-2">
               <Button
-                onClick={() => scrollToId("contacto")}
+                onClick={() => scrollToId("disponibilidad")}
                 className="rounded-full font-extrabold party-bounce"
                 data-testid="button-reservar"
               >
