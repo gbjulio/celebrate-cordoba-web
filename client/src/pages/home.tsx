@@ -772,16 +772,6 @@ function Contact() {
 
             <div className="mt-6 glass rounded-3xl p-6 max-w-2xl mx-auto" data-testid="card-contact-info">
               <div className="grid gap-4 text-base">
-                <div className="flex items-start gap-4" data-testid="row-address">
-                  <span className="h-10 w-10 rounded-xl bg-[hsl(196_92%_46%/0.14)] grid place-items-center shrink-0">
-                    <MapPin className="h-5 w-5 text-[hsl(196_92%_46%)]" />
-                  </span>
-                  <div>
-                    <div className="font-extrabold tracking-tight text-lg">Dirección</div>
-                    <div className="text-muted-foreground" data-testid="text-address">{ADDRESS}</div>
-                  </div>
-                </div>
-
                 <div className="flex items-start gap-4" data-testid="row-whatsapp">
                   <span className="h-10 w-10 rounded-xl bg-[hsl(340_92%_60%/0.14)] grid place-items-center shrink-0">
                     <MessageCircle className="h-5 w-5 text-[hsl(340_92%_60%)]" />
@@ -796,22 +786,6 @@ function Contact() {
                       data-testid="link-whatsapp"
                     >
                       {WHATSAPP_NUMBER}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4" data-testid="row-email">
-                  <span className="h-10 w-10 rounded-xl bg-[hsl(48_98%_44%/0.14)] grid place-items-center shrink-0">
-                    <Phone className="h-5 w-5 text-[hsl(48_98%_44%)]" />
-                  </span>
-                  <div>
-                    <div className="font-extrabold tracking-tight text-lg">Email</div>
-                    <a
-                      className="text-muted-foreground underline underline-offset-4 hover:text-foreground block"
-                      href={`mailto:${CONTACT_EMAIL}`}
-                      data-testid="link-email"
-                    >
-                      {CONTACT_EMAIL}
                     </a>
                   </div>
                 </div>
