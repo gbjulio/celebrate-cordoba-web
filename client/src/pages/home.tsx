@@ -512,71 +512,77 @@ function Tarifas() {
   return (
     <section id="tarifas" className="pt-10 sm:pt-14" data-testid="section-tarifas">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid md:grid-cols-12 gap-6 items-start">
-          <div className="md:col-span-6">
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-tarifas-title">
-              Tarifas
-            </h2>
-            <p className="mt-2 text-muted-foreground" data-testid="text-tarifas-desc">
-              Paquetes claros y sin sorpresas. Puedes reservar por mañana, tarde o día completo.
-            </p>
+        <div>
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-tarifas-title">
+            Tarifas
+          </h2>
+          <p className="mt-2 text-muted-foreground" data-testid="text-tarifas-desc">
+            Paquetes claros y sin sorpresas. Puedes reservar por mañana, tarde o día completo.
+          </p>
 
-            <div className="mt-5 grid gap-4" data-testid="grid-paquetes">
-              {paquetes.map((p, idx) => (
-                <Card key={p.title} className="glass rounded-3xl border-border/70 shadow-sm" data-testid={`card-paquete-${idx}`}>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-base sm:text-lg font-extrabold tracking-tight">
-                      {p.title}
-                    </CardTitle>
-                    <div className="text-sm text-muted-foreground" data-testid={`text-paquete-time-${idx}`}>{p.time}</div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-end justify-between gap-4">
-                      <div>
-                        <div className="text-xs font-extrabold text-muted-foreground">Precio</div>
-                        <div className="font-display text-3xl font-extrabold" data-testid={`text-paquete-price-${idx}`}>
-                          {p.price}
-                        </div>
+          <div
+            className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+            data-testid="grid-paquetes"
+          >
+            {paquetes.map((p, idx) => (
+              <Card
+                key={p.title}
+                className="glass rounded-3xl border-border/70 shadow-sm"
+                data-testid={`card-paquete-${idx}`}
+              >
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base sm:text-lg font-extrabold tracking-tight">
+                    {p.title}
+                  </CardTitle>
+                  <div className="text-sm text-muted-foreground" data-testid={`text-paquete-time-${idx}`}>
+                    {p.time}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <div className="text-xs font-extrabold text-muted-foreground">Precio</div>
+                      <div className="font-display text-3xl font-extrabold" data-testid={`text-paquete-price-${idx}`}>
+                        {p.price}
                       </div>
-                      <Button
-                        className="rounded-full font-extrabold"
-                        onClick={() => scrollToId("contacto")}
-                        data-testid={`button-reservar-paquete-${idx}`}
-                      >
-                        Reservar
-                      </Button>
                     </div>
-                    <ul className="mt-4 grid gap-2 text-sm">
-                      {p.details.map((d, i) => (
-                        <li key={d} className="flex items-start gap-2" data-testid={`list-paquete-${idx}-${i}`}>
-                          <Check className="h-4 w-4 text-[hsl(196_92%_46%)] mt-0.5" />
-                          <span className="text-foreground/85">{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="mt-6 grid sm:grid-cols-2 gap-4">
-              <div className="glass rounded-3xl p-5" data-testid="card-extra-hora-suelta">
-                <div className="text-xs font-extrabold text-muted-foreground">Hora suelta</div>
-                <div className="font-display text-3xl font-extrabold tracking-tight" data-testid="text-hora-suelta">
-                  30€
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">Perfecto para alargar un ratito.</div>
-              </div>
-              <div className="glass rounded-3xl p-5" data-testid="card-extra-hora-extra">
-                <div className="text-xs font-extrabold text-muted-foreground">Hora extra</div>
-                <div className="font-display text-3xl font-extrabold tracking-tight" data-testid="text-hora-extra">
-                  10€
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">Añádela a tu paquete.</div>
-              </div>
-            </div>
+                    <Button
+                      className="rounded-full font-extrabold"
+                      onClick={() => scrollToId("contacto")}
+                      data-testid={`button-reservar-paquete-${idx}`}
+                    >
+                      Reservar
+                    </Button>
+                  </div>
+                  <ul className="mt-4 grid gap-2 text-sm">
+                    {p.details.map((d, i) => (
+                      <li key={d} className="flex items-start gap-2" data-testid={`list-paquete-${idx}-${i}`}>
+                        <Check className="h-4 w-4 text-[hsl(196_92%_46%)] mt-0.5" />
+                        <span className="text-foreground/85">{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            <div className="glass rounded-3xl p-5" data-testid="card-extra-hora-suelta">
+              <div className="text-xs font-extrabold text-muted-foreground">Hora suelta</div>
+              <div className="font-display text-3xl font-extrabold tracking-tight" data-testid="text-hora-suelta">
+                30€
+              </div>
+              <div className="mt-1 text-sm text-muted-foreground">Perfecto para alargar un ratito.</div>
+            </div>
+            <div className="glass rounded-3xl p-5" data-testid="card-extra-hora-extra">
+              <div className="text-xs font-extrabold text-muted-foreground">Hora extra</div>
+              <div className="font-display text-3xl font-extrabold tracking-tight" data-testid="text-hora-extra">
+                10€
+              </div>
+              <div className="mt-1 text-sm text-muted-foreground">Añádela a tu paquete.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
