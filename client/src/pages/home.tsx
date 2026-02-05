@@ -30,7 +30,6 @@ import {
 } from "date-fns";
 
 import logo from "@assets/image_1769815092292.png";
-import tarifasImg from "@assets/image_1769815134263.png";
 import heroBalloons from "@/assets/images/hero-balloons.png";
 import partyStickers from "@/assets/images/stickers-party.png";
 
@@ -578,25 +577,6 @@ function Tarifas() {
             </div>
           </div>
 
-          <div className="md:col-span-6">
-            <div className="glass rounded-[28px] overflow-hidden" data-testid="card-tarifas-img">
-              <div className="p-5 sm:p-6 flex items-center justify-between">
-                <div>
-                  <div className="font-extrabold tracking-tight">Tarifa oficial</div>
-                  <div className="text-sm text-muted-foreground">(Imagen proporcionada)</div>
-                </div>
-                <Link href="#" className="text-sm font-extrabold underline underline-offset-4" data-testid="link-tarifas-download">
-                  Ver
-                </Link>
-              </div>
-              <img
-                src={tarifasImg}
-                alt="Tarifas Celebrate Córdoba"
-                className="w-full h-auto"
-                data-testid="img-tarifas"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
