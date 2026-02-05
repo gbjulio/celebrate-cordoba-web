@@ -818,7 +818,21 @@ function Contact() {
               </div>
 
               <Separator className="my-6" />
-              <div className="text-sm text-center text-muted-foreground" data-testid="text-contact-note">
+              
+              <div className="rounded-2xl overflow-hidden border border-[hsl(var(--primary)/0.2)]" data-testid="map-container">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.3735609752803!2d-4.733657323475208!3d37.89833027195448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6cdfe3c7b6e0af%3A0xa11beb91c5428278!2sC.%20Letonia%2C%20145%2C%2014014%20C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1770317081678!5m2!1ses!2ses" 
+                  width="100%" 
+                  height="300" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación de Celebrate Córdoba"
+                ></iframe>
+              </div>
+
+              <div className="mt-4 text-sm text-center text-muted-foreground" data-testid="text-contact-note">
                 También puedes escribirnos por WhatsApp para consultas rápidas.
               </div>
             </div>
