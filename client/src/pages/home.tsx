@@ -81,13 +81,13 @@ function Nav() {
       <div
         className={classNames(
           "mx-auto max-w-6xl px-4 sm:px-6",
-          "mt-3",
+          "mt-2",
         )}
       >
         <div
           className={classNames(
             "glass rounded-2xl",
-            "px-4 sm:px-5 py-3",
+            "px-3 sm:px-4 py-1.5",
             scrolled ? "shadow-md" : "shadow-sm",
           )}
         >
@@ -96,11 +96,11 @@ function Nav() {
               <img
                 src={logo}
                 alt="Celebrate Córdoba"
-                className="h-16 w-16 sm:h-20 sm:w-20 rounded-3xl bg-white/70 p-2"
+                className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-white/70 p-1"
                 data-testid="img-logo"
               />
               <div className="leading-tight">
-                <div className="font-display text-lg sm:text-xl font-extrabold tracking-tight">
+                <div className="font-display text-base sm:text-lg font-extrabold tracking-tight">
                   Celebrate Córdoba
                 </div>
                 <div
