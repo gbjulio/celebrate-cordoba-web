@@ -926,14 +926,6 @@ function Footer() {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="#"
-                className="bubble h-11 w-11 grid place-items-center hover:bg-white/90 transition"
-                aria-label="Facebook"
-                data-testid="link-facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
             </div>
           </div>
 
