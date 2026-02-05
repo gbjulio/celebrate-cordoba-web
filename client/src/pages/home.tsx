@@ -96,7 +96,7 @@ function Nav() {
               <img
                 src={logo}
                 alt="Celebrate Córdoba"
-                className="h-11 w-11 rounded-xl bg-white/70 p-1"
+                className="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl bg-white/70 p-1.5"
                 data-testid="img-logo"
               />
               <div className="leading-tight">
