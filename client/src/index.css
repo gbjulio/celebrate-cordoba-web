@@ -38,21 +38,20 @@
 }
 
 :root {
-  --background: 0 0% 99%;
+  --background: 220 30% 98%;
   --foreground: 228 24% 16%;
 
   --card: 0 0% 100%;
   --card-foreground: 228 24% 16%;
-  --card-border: 220 20% 92%;
+  --card-border: 220 18% 90%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 228 24% 16%;
 
-  --border: 220 18% 92%;
-  --input: 220 18% 88%;
+  --border: 220 18% 90%;
+  --input: 220 18% 86%;
   --ring: 196 92% 52%;
 
-  /* White-first with punchy accents */
   --primary: 196 92% 46%;
   --primary-foreground: 0 0% 100%;
 
@@ -103,28 +102,30 @@ a {
     font-family: var(--font-display);
   }
 
+  /* Multi-color page background like the hero */
   .celebrate-shell {
     position: relative;
     min-height: 100vh;
     background:
-      radial-gradient(900px 420px at 10% 0%, hsl(196 92% 56% / 0.12), transparent 60%),
-      radial-gradient(800px 420px at 90% 10%, hsl(330 92% 70% / 0.10), transparent 62%),
-      radial-gradient(700px 420px at 50% 110%, hsl(48 98% 62% / 0.10), transparent 62%),
-      linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+      radial-gradient(900px 520px at 12% -10%, hsl(196 92% 56% / 0.22), transparent 60%),
+      radial-gradient(860px 520px at 92% 12%, hsl(330 92% 70% / 0.20), transparent 62%),
+      radial-gradient(900px 520px at 40% 118%, hsl(48 98% 62% / 0.18), transparent 62%),
+      radial-gradient(820px 520px at 80% 120%, hsl(140 68% 44% / 0.12), transparent 64%),
+      linear-gradient(180deg, hsl(220 30% 99%) 0%, hsl(210 45% 97%) 100%);
   }
 
-  /* Neutral festive: tiny confetti, very subtle */
   .celebrate-shell::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.10;
+    opacity: 0.16;
     background-image:
-      radial-gradient(circle at 14px 16px, hsl(330 92% 64% / 0.28) 1.2px, transparent 1.4px),
-      radial-gradient(circle at 34px 34px, hsl(196 92% 46% / 0.26) 1.1px, transparent 1.3px),
-      radial-gradient(circle at 54px 18px, hsl(48 98% 60% / 0.24) 1.2px, transparent 1.4px);
-    background-size: 96px 96px;
+      radial-gradient(circle at 14px 16px, hsl(330 92% 64% / 0.30) 1.2px, transparent 1.4px),
+      radial-gradient(circle at 34px 34px, hsl(196 92% 46% / 0.28) 1.1px, transparent 1.3px),
+      radial-gradient(circle at 54px 18px, hsl(48 98% 60% / 0.26) 1.2px, transparent 1.4px),
+      radial-gradient(circle at 18px 52px, hsl(140 68% 44% / 0.22) 1.1px, transparent 1.3px);
+    background-size: 78px 78px;
     mix-blend-mode: multiply;
   }
 
@@ -137,21 +138,21 @@ a {
   }
 
   .glass {
-    background: hsl(0 0% 100% / 0.76);
-    border: 1px solid hsl(220 18% 92% / 0.9);
+    background: hsl(0 0% 100% / 0.78);
+    border: 1px solid hsl(220 18% 90% / 0.9);
     box-shadow: var(--shadow);
     backdrop-filter: blur(12px);
   }
 
   .soft-card {
     background: hsl(0 0% 100% / 0.96);
-    border: 1px solid hsl(220 18% 92% / 0.95);
+    border: 1px solid hsl(220 18% 90% / 0.95);
     box-shadow: var(--shadow-sm);
   }
 
   .sticker {
     border-radius: 9999px;
-    border: 1px solid hsl(220 18% 90%);
+    border: 1px solid hsl(220 18% 88%);
     background: hsl(0 0% 100% / 0.82);
     box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06), 0 16px 36px -30px hsl(196 92% 46% / 0.28);
     backdrop-filter: blur(12px);
@@ -160,7 +161,7 @@ a {
   .bubble {
     border-radius: 9999px;
     background: hsl(0 0% 100% / 0.78);
-    border: 1px solid hsl(220 18% 92%);
+    border: 1px solid hsl(220 18% 90%);
     box-shadow: 0 1px 0 hsl(0 0% 0% / 0.06);
   }
 
@@ -183,7 +184,7 @@ a {
     overflow: hidden;
     border-radius: 18px;
     background: linear-gradient(180deg, hsl(0 0% 100% / 0.92), hsl(0 0% 100% / 0.72));
-    border: 1px solid hsl(220 18% 92%);
+    border: 1px solid hsl(220 18% 90%);
     box-shadow: var(--shadow-sm);
   }
 
@@ -220,7 +221,7 @@ a {
     letter-spacing: -0.01em;
     border-radius: 9999px;
     background: hsl(0 0% 100% / 0.86);
-    border: 1px solid hsl(220 18% 92%);
+    border: 1px solid hsl(220 18% 90%);
     backdrop-filter: blur(12px);
   }
 
