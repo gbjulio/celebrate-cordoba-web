@@ -265,20 +265,9 @@ export default function AdminPage() {
                   required
                 />
               </div>
-              <div className="flex gap-2">
-                <Button type="submit" className="flex-1" disabled={loginMutation.isPending}>
-                  {loginMutation.isPending ? "Iniciando sesión..." : "Iniciar sesión"}
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="flex-1"
-                  onClick={handleRegister}
-                  disabled={registerMutation.isPending}
-                >
-                  {registerMutation.isPending ? "Registrando..." : "Registrar"}
-                </Button>
-              </div>
+              <Button type="submit" className="w-full" disabled={loginMutation.isPending}>
+                {loginMutation.isPending ? "Iniciando sesión..." : "Iniciar sesión"}
+              </Button>
             </form>
           </CardContent>
         </Card>

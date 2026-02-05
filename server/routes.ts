@@ -49,31 +49,24 @@ export async function registerRoutes(
     next();
   };
 
-  // Auth routes
-  app.post("/api/auth/register", async (req, res) => {
+  // Seed admin user on startup
+  const ADMIN_USERNAME = "celebratecordobaadmin";
+  const ADMIN_PASSWORD = "yEE5N!7hlfzHUk";
+
+  (async () => {
     try {
-      const { username, password } = req.body;
-      
-      if (!username || !password) {
-        return res.status(400).json({ message: "Usuario y contraseña requeridos" });
+      const existingAdmin = await storage.getUserByUsername(ADMIN_USERNAME);
+      if (!existingAdmin) {
+        const hashedPassword = await bcrypt.hash(ADMIN_PASSWORD, 10);
+        await storage.createUser({ username: ADMIN_USERNAME, password: hashedPassword });
+        console.log("Admin user created");
       }
-
-      const existingUser = await storage.getUserByUsername(username);
-      if (existingUser) {
-        return res.status(400).json({ message: "El usuario ya existe" });
-      }
-
-      const hashedPassword = await bcrypt.hash(password, 10);
-      const user = await storage.createUser({ username, password: hashedPassword });
-      
-      req.session.userId = user.id;
-      res.json({ success: true, user: { id: user.id, username: user.username } });
     } catch (error) {
-      console.error("Error en registro:", error);
-      res.status(500).json({ message: "Error al registrar usuario" });
+      console.error("Error seeding admin user:", error);
     }
-  });
+  })();
 
+  // Auth routes (registration disabled)
   app.post("/api/auth/login", async (req, res) => {
     try {
       const { username, password } = req.body;
