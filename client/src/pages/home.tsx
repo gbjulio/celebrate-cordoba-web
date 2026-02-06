@@ -300,8 +300,8 @@ function Hero() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 flex items-center justify-center">
-                    <img src={logo} alt="Celebrate Córdoba" className="h-32 w-32 rounded-full object-cover" data-testid="img-portada-logo" />
+                  <div className="flex-shrink-0 flex items-center justify-center self-center">
+                    <img src={logo} alt="Celebrate Córdoba" className="h-40 w-40 rounded-full object-cover" data-testid="img-portada-logo" />
                   </div>
                   </div>
                 </div>
