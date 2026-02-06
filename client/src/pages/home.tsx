@@ -92,7 +92,7 @@ function Nav() {
       <div
         className={classNames(
           "mx-auto max-w-6xl px-4 sm:px-6",
-          "mt-2",
+          "pt-2",
         )}
       >
         <div
