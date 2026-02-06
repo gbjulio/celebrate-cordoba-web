@@ -32,6 +32,7 @@ import {
 } from "date-fns";
 
 import logo from "@assets/image_1769815092292.png";
+import celebrateLogo from "@/assets/images/logo.png";
 import heroBalloons from "@/assets/images/hero-balloons.png";
 import partyStickers from "@/assets/images/stickers-party.png";
 
@@ -259,7 +260,10 @@ function Hero() {
             >
               <div className="grid gap-4">
                 <div className="glass rounded-3xl p-6" data-testid="card-portada-contacto">
-                  <div className="font-display text-2xl font-extrabold tracking-tight">Contacto</div>
+                  <div className="flex items-center gap-4">
+                    <img src={celebrateLogo} alt="Celebrate Córdoba" className="h-20 w-20 rounded-full object-cover" data-testid="img-portada-logo" />
+                    <div className="font-display text-2xl font-extrabold tracking-tight">Contacto</div>
+                  </div>
                   <div className="mt-4 grid gap-3 text-sm">
                     <div className="flex items-start gap-3" data-testid="row-portada-address">
                       <MapPin className="h-5 w-5 text-[hsl(196_92%_46%)] mt-0.5" />
