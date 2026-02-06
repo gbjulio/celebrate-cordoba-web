@@ -895,10 +895,10 @@ function Footer() {
                 <MessageCircle className="h-4 w-4" />
                 {WHATSAPP_NUMBER}
               </a>
-              <div className="inline-flex items-center gap-2 text-muted-foreground" data-testid="text-footer-address">
+              <a href="https://maps.app.goo.gl/GYjF4R7ZaXydwNhb7" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-bold text-foreground/85 hover:text-foreground" data-testid="link-footer-address">
                 <MapPin className="h-4 w-4" />
                 {ADDRESS}
-              </div>
+              </a>
             </div>
 
             <div className="flex items-center gap-2">
