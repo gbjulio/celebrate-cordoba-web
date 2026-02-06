@@ -323,7 +323,7 @@ function Presentation() {
         <div className="grid md:grid-cols-12 gap-6 items-start">
           <div className="md:col-span-7">
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight" data-testid="text-presentacion-title">
-              Celebraciones sin estrés (y con mucha ilusión)
+              Celebraciones sin estrés
             </h2>
             <p className="mt-3 text-muted-foreground text-base sm:text-lg" data-testid="text-presentacion-desc">
               Celebrate Córdoba es un espacio versátil para celebrar cumpleaños, bautizos, baby showers, revelaciones, jubilaciones y mucho más.
