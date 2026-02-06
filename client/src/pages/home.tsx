@@ -31,8 +31,7 @@ import {
   isBefore,
 } from "date-fns";
 
-import logo from "@assets/image_1769815092292.png";
-import celebrateLogo from "@/assets/images/logo.png";
+import logo from "@/assets/images/logo.png";
 import heroBalloons from "@/assets/images/hero-balloons.png";
 import partyStickers from "@/assets/images/stickers-party.png";
 
@@ -302,7 +301,7 @@ function Hero() {
                     </div>
                   </div>
                   <div className="flex-shrink-0 flex items-center justify-center">
-                    <img src={celebrateLogo} alt="Celebrate Córdoba" className="h-32 w-32 rounded-full object-cover" data-testid="img-portada-logo" />
+                    <img src={logo} alt="Celebrate Córdoba" className="h-32 w-32 rounded-full object-cover" data-testid="img-portada-logo" />
                   </div>
                   </div>
                 </div>
