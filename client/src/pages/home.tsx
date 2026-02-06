@@ -260,11 +260,9 @@ function Hero() {
             >
               <div className="grid gap-4">
                 <div className="glass rounded-3xl p-6" data-testid="card-portada-contacto">
-                  <div className="flex items-center gap-4">
-                    <img src={celebrateLogo} alt="Celebrate Córdoba" className="h-20 w-20 rounded-full object-cover" data-testid="img-portada-logo" />
-                    <div className="font-display text-2xl font-extrabold tracking-tight">Contacto</div>
-                  </div>
-                  <div className="mt-4 grid gap-3 text-sm">
+                  <div className="font-display text-2xl font-extrabold tracking-tight">Contacto</div>
+                  <div className="mt-4 flex items-center gap-6">
+                  <div className="grid gap-3 text-sm flex-1">
                     <div className="flex items-start gap-3" data-testid="row-portada-address">
                       <MapPin className="h-5 w-5 text-[hsl(196_92%_46%)] mt-0.5" />
                       <div>
@@ -302,6 +300,10 @@ function Hero() {
                         </a>
                       </div>
                     </div>
+                  </div>
+                  <div className="flex-shrink-0 flex items-center justify-center">
+                    <img src={celebrateLogo} alt="Celebrate Córdoba" className="h-32 w-32 rounded-full object-cover" data-testid="img-portada-logo" />
+                  </div>
                   </div>
                 </div>
 
