@@ -53,7 +53,7 @@ import { Separator } from "@/components/ui/separator";
 
 const WHATSAPP_NUMBER = "614994794";
 const CONTACT_EMAIL = "celebratecordoba@gmail.com";
-const ADDRESS = "Calle Letonia 145 5b";
+const ADDRESS = "C. Letonia, 145, 5b, 14014 Córdoba";
 
 type DayStatus = "available" | "booked" | "blocked" | "booked-morning" | "booked-afternoon";
 
