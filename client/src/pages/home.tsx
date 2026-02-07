@@ -362,7 +362,7 @@ function Presentation() {
                 ¿Por qué elegirnos?
               </div>
               <div className="mt-3 grid gap-3">
-                {["Ubicación cómoda", "Horarios flexibles", "Tarifas claras", "Ambiente familiar"].map((t, i) => (
+                {["Fácil aparcamiento", "Horarios flexibles", "Tarifas claras", "Ambiente familiar"].map((t, i) => (
                   <div key={t} className="flex items-center gap-3" data-testid={`row-why-${i}`}>
                     <span className="h-9 w-9 rounded-2xl bg-[hsl(196_92%_52%/0.14)] border border-border grid place-items-center">
                       <Star className="h-4 w-4 text-[hsl(196_92%_42%)]" />
