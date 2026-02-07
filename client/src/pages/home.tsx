@@ -740,15 +740,13 @@ function AvailabilityCalendar() {
                 })}
               </div>
 
+              {selectedDay && (
               <div className="mt-5 text-sm text-muted-foreground text-center" data-testid="text-selected-day">
-                {selectedDay ? (
                   <span>
                     <span className="font-extrabold text-foreground">{format(selectedDay, "dd/MM/yyyy")}</span> · {legend.find((x) => x.key === selectedStatus)?.label}
                   </span>
-                ) : (
-                  "Elige un día para ver detalles."
-                )}
               </div>
+              )}
 
               {selectedDay && selectedStatus !== 'blocked' && selectedStatus !== 'booked' && (
                 <div className="mt-3 flex justify-center">
