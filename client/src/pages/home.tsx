@@ -654,7 +654,7 @@ function AvailabilityCalendar() {
               Disponibilidad
             </h2>
             <p className="mt-2 text-muted-foreground text-center" data-testid="text-disponibilidad-desc">
-              Selecciona un día para ver el estado.
+              Selecciona un día para tu evento.
             </p>
 
             <div className="mt-6 glass rounded-[28px] p-5 sm:p-6 max-w-2xl mx-auto" data-testid="card-calendar">
