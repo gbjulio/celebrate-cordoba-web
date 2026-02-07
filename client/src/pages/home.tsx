@@ -562,7 +562,7 @@ function Tarifas() {
 
           <div className="mt-6 grid gap-4 lg:grid-cols-2" data-testid="grid-paquetes">
             {renderTable("Lunes a jueves", tablaLJ, "table-tarifas-lj")}
-            {renderTable("Viernes, sábados, domingos y festivos", tablaFSD, "table-tarifas-fsd")}
+            {renderTable("Viernes, sábados, domingos, festivos y vísperas de festivo", tablaFSD, "table-tarifas-fsd")}
           </div>
 
           <div className="mt-4 grid sm:grid-cols-2 gap-4">
