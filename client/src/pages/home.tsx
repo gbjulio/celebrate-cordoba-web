@@ -509,6 +509,46 @@ function Tarifas() {
     },
   ];
 
+  const tablaLJ = [
+    { turno: "Mañanas", horario: "10:00 – 14:00", horas: "4 h", precio: "50€" },
+    { turno: "Tardes", horario: "16:00 – 22:00", horas: "6 h", precio: "70€" },
+    { turno: "Día completo", horario: "10:00 – 22:00", horas: "12 h", precio: "90€" },
+  ];
+
+  const tablaFSD = [
+    { turno: "Mañanas", horario: "10:00 – 14:00", horas: "4 h", precio: "80€" },
+    { turno: "Tardes", horario: "16:00 – 23:00", horas: "7 h", precio: "120€" },
+    { turno: "Día completo", horario: "10:00 – 23:00", horas: "13 h", precio: "145€" },
+  ];
+
+  const renderTable = (title: string, rows: typeof tablaLJ, testId: string) => (
+    <div className="glass rounded-3xl p-5 sm:p-6" data-testid={testId}>
+      <div className="font-display text-lg sm:text-xl font-extrabold tracking-tight mb-4">{title}</div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-border/50">
+              <th className="text-left font-extrabold text-muted-foreground py-2 pr-3">Turno</th>
+              <th className="text-left font-extrabold text-muted-foreground py-2 pr-3">Horario</th>
+              <th className="text-left font-extrabold text-muted-foreground py-2 pr-3">Duración</th>
+              <th className="text-right font-extrabold text-muted-foreground py-2">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.turno} className="border-b border-border/30 last:border-0" data-testid={`row-tarifa-${r.turno.toLowerCase().replace(/\s+/g, "-")}`}>
+                <td className="py-3 pr-3 font-extrabold">{r.turno}</td>
+                <td className="py-3 pr-3 text-muted-foreground">{r.horario}</td>
+                <td className="py-3 pr-3 text-muted-foreground">{r.horas}</td>
+                <td className="py-3 text-right font-display text-lg font-extrabold">{r.precio}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
   return (
     <section id="tarifas" className="pt-10 sm:pt-14" data-testid="section-tarifas">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -520,47 +560,12 @@ function Tarifas() {
             Paquetes claros y sin sorpresas. Mañana, tarde o día completo.
           </p>
 
-          <div
-            className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
-            data-testid="grid-paquetes"
-          >
-            {paquetes.map((p, idx) => (
-              <Card
-                key={p.title}
-                className="glass rounded-3xl border-border/70 shadow-sm"
-                data-testid={`card-paquete-${idx}`}
-              >
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-base sm:text-lg font-extrabold tracking-tight">
-                    {p.title}
-                  </CardTitle>
-                  <div className="text-sm text-muted-foreground" data-testid={`text-paquete-time-${idx}`}>
-                    {p.time}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <div className="text-xs font-extrabold text-muted-foreground">Precio</div>
-                      <div className="font-display text-3xl font-extrabold" data-testid={`text-paquete-price-${idx}`}>
-                        {p.price}
-                      </div>
-                    </div>
-                  </div>
-                  <ul className="mt-4 grid gap-2 text-sm">
-                    {p.details.map((d, i) => (
-                      <li key={d} className="flex items-start gap-2" data-testid={`list-paquete-${idx}-${i}`}>
-                        <Check className="h-4 w-4 text-[hsl(196_92%_46%)] mt-0.5" />
-                        <span className="text-foreground/85">{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="mt-6 grid gap-4 lg:grid-cols-2" data-testid="grid-paquetes">
+            {renderTable("Lunes a jueves", tablaLJ, "table-tarifas-lj")}
+            {renderTable("Viernes, sábados, domingos y festivos", tablaFSD, "table-tarifas-fsd")}
           </div>
 
-          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+          <div className="mt-4 grid sm:grid-cols-2 gap-4">
             <div className="glass rounded-3xl p-5" data-testid="card-extra-hora-suelta">
               <div className="text-xs font-extrabold text-muted-foreground">Hora suelta</div>
               <div className="font-display text-3xl font-extrabold tracking-tight" data-testid="text-hora-suelta">
