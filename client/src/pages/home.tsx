@@ -530,7 +530,6 @@ function Tarifas() {
             <tr className="border-b border-border/50">
               <th className="text-left font-extrabold text-muted-foreground py-2 pr-3">Turno</th>
               <th className="text-left font-extrabold text-muted-foreground py-2 pr-3">Horario</th>
-              <th className="text-left font-extrabold text-muted-foreground py-2 pr-3">Duración</th>
               <th className="text-right font-extrabold text-muted-foreground py-2">Precio</th>
             </tr>
           </thead>
@@ -539,7 +538,6 @@ function Tarifas() {
               <tr key={r.turno} className="border-b border-border/30 last:border-0" data-testid={`row-tarifa-${r.turno.toLowerCase().replace(/\s+/g, "-")}`}>
                 <td className="py-3 pr-3 font-extrabold">{r.turno}</td>
                 <td className="py-3 pr-3 text-muted-foreground">{r.horario}</td>
-                <td className="py-3 pr-3 text-muted-foreground">{r.horas}</td>
                 <td className="py-3 text-right font-display text-lg font-extrabold">{r.precio}</td>
               </tr>
             ))}
