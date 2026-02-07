@@ -344,8 +344,8 @@ function Presentation() {
                   desc: "Decoración y vibe alegre, listo para fotos increíbles.",
                 },
                 {
-                  title: "Acompañamiento",
-                  desc: "Te guiamos para elegir la opción ideal según tu plan.",
+                  title: "Pet friendly",
+                  desc: "Tu mascota también es bienvenida a la fiesta.",
                 },
               ].map((v) => (
                 <div key={v.title} className="glass rounded-2xl p-5" data-testid={`card-valor-${v.title.toLowerCase().replace(/\s+/g, "-")}`}>
