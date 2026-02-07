@@ -762,7 +762,7 @@ function AvailabilityCalendar() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Consultar esta fecha
+                      Reservar esta fecha
                     </a>
                   </Button>
                 </div>
