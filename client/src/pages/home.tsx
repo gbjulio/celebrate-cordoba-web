@@ -569,7 +569,7 @@ function Tarifas() {
               <div className="font-display text-3xl font-extrabold tracking-tight" data-testid="text-hora-suelta">
                 30€
               </div>
-              <div className="mt-1 text-sm text-muted-foreground">Perfecto para alargar un ratito.</div>
+              <div className="mt-1 text-sm text-muted-foreground">¿Solo necesitas un rato? Sin compromiso, ven y disfruta.</div>
             </div>
             <div className="glass rounded-3xl p-5" data-testid="card-extra-hora-extra">
               <div className="text-xs font-extrabold text-muted-foreground">Hora extra</div>
