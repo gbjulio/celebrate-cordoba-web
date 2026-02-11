@@ -340,7 +340,7 @@ function Presentation() {
                   desc: "Para distintas edades, con ambiente cómodo para familias.",
                 },
                 {
-                  title: "Estilo adorable",
+                  title: "Estilo único",
                   desc: "Decoración y vibe alegre, listo para fotos increíbles.",
                 },
                 {
