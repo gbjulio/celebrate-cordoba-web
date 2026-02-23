@@ -49,23 +49,6 @@ export async function registerRoutes(
     next();
   };
 
-  // Seed admin user on startup
-  const ADMIN_USERNAME = "celebratecordobaadmin";
-  const ADMIN_PASSWORD = "yEE5N!7hlfzHUk";
-
-  (async () => {
-    try {
-      const existingAdmin = await storage.getUserByUsername(ADMIN_USERNAME);
-      if (!existingAdmin) {
-        const hashedPassword = await bcrypt.hash(ADMIN_PASSWORD, 10);
-        await storage.createUser({ username: ADMIN_USERNAME, password: hashedPassword });
-        console.log("Admin user created");
-      }
-    } catch (error) {
-      console.error("Error seeding admin user:", error);
-    }
-  })();
-
   // Auth routes (registration disabled)
   app.post("/api/auth/login", async (req, res) => {
     try {
