@@ -22,6 +22,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { getToken, setToken, removeToken, getAuthHeaders } from "@/lib/auth";
 
 type DayStatus = "available" | "booked" | "blocked" | "booked-morning" | "booked-afternoon";
 
@@ -52,7 +53,12 @@ export default function AdminPage() {
   const { data: authData, isLoading: authLoading } = useQuery({
     queryKey: ["/api/auth/me"],
     queryFn: async () => {
-      const res = await fetch("/api/auth/me");
+      const token = getToken();
+      if (!token) throw new Error("Not authenticated");
+      
+      const res = await fetch("/api/auth/me", {
+        headers: getAuthHeaders(),
+      });
       if (!res.ok) throw new Error("Not authenticated");
       return res.json();
     },
@@ -90,7 +96,10 @@ export default function AdminPage() {
       }
       return res.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.token) {
+        setToken(data.token);
+      }
       setIsLoggedIn(true);
       queryClient.invalidateQueries({ queryKey: ["/api/auth/me"] });
       queryClient.invalidateQueries({ queryKey: ["/api/bookings"] });
@@ -129,11 +138,15 @@ export default function AdminPage() {
   // Logout mutation
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch("/api/auth/logout", { method: "POST" });
+      const res = await fetch("/api/auth/logout", { 
+        method: "POST",
+        headers: getAuthHeaders(),
+      });
       if (!res.ok) throw new Error("Logout failed");
       return res.json();
     },
     onSuccess: () => {
+      removeToken();
       setIsLoggedIn(false);
       queryClient.invalidateQueries({ queryKey: ["/api/auth/me"] });
       navigate("/");
@@ -146,7 +159,7 @@ export default function AdminPage() {
     mutationFn: async ({ date, status }: { date: string; status: DayStatus }) => {
       const res = await fetch(`/api/bookings/${date}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ status }),
       });
       if (!res.ok) throw new Error("Failed to update booking");
@@ -164,7 +177,10 @@ export default function AdminPage() {
   // Delete booking mutation
   const deleteBookingMutation = useMutation({
     mutationFn: async (date: string) => {
-      const res = await fetch(`/api/bookings/${date}`, { method: "DELETE" });
+      const res = await fetch(`/api/bookings/${date}`, { 
+        method: "DELETE",
+        headers: getAuthHeaders(),
+      });
       if (!res.ok) throw new Error("Failed to delete booking");
       return res.json();
     },
@@ -237,12 +253,15 @@ export default function AdminPage() {
     try {
       const promises = Object.entries(pendingChanges).map(async ([date, status]) => {
         if (status === "delete") {
-          const res = await fetch(`/api/bookings/${date}`, { method: "DELETE" });
+          const res = await fetch(`/api/bookings/${date}`, { 
+            method: "DELETE",
+            headers: getAuthHeaders(),
+          });
           if (!res.ok) throw new Error("Failed to delete booking");
         } else {
           const res = await fetch(`/api/bookings/${date}`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: getAuthHeaders(),
             body: JSON.stringify({ status }),
           });
           if (!res.ok) throw new Error("Failed to update booking");

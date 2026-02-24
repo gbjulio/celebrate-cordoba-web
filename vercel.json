@@ -6,8 +6,16 @@
   "framework": null,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "source": "/api/auth/:path*",
+      "destination": "/api/auth"
+    },
+    {
+      "source": "/api/bookings/:date",
+      "destination": "/api/bookings"
+    },
+    {
+      "source": "/api/bookings",
+      "destination": "/api/bookings"
     },
     {
       "source": "/(.*)",
