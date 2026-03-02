@@ -42,6 +42,9 @@ import imgCandyBar from "@/assets/images/venue-candybar.jpg";
 import imgDecoration from "@/assets/images/venue-decoration.jpg";
 import imgFamily from "@/assets/images/venue-family.jpg";
 import imgKitchen from "@/assets/images/venue-kitchen.jpg";
+import imgCocina from "@/assets/images/cocina.jpeg";
+import imgEntrada from "@/assets/images/entrada.jpeg";
+import imgPhotocall from "@/assets/images/photocall.jpeg";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -395,12 +398,11 @@ function Gallery() {
   const photos = useMemo(
     () =>
       [
-        { label: "Salón principal", seed: "salon", src: imgSalon },
-        { label: "Zona de juegos", seed: "juegos", src: imgPlayground },
+        { label: "Entrada", seed: "entrada", src: imgEntrada },
+        { label: "Cocina", seed: "cocina", src: imgCocina },
+        { label: "Photocall", seed: "photocall", src: imgPhotocall },
         { label: "Mesa dulce", seed: "mesa", src: imgCandyBar },
-        { label: "Decoración", seed: "deco", src: imgDecoration },
         { label: "Celebraciones", seed: "celebraciones", src: imgFamily },
-        { label: "Cocina y Detalles", seed: "detalles", src: imgKitchen },
       ] as const,
     [],
   );
