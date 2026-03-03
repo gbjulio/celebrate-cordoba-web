@@ -45,6 +45,7 @@ import imgKitchen from "@/assets/images/venue-kitchen.jpg";
 import imgCocina from "@/assets/images/cocina.jpeg";
 import imgEntrada from "@/assets/images/entrada.jpeg";
 import imgPhotocall from "@/assets/images/photocall.jpeg";
+import imgFutbolin from "@/assets/images/futbolin.jpeg";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -401,6 +402,7 @@ function Gallery() {
         { label: "Entrada", seed: "entrada", src: imgEntrada },
         { label: "Cocina", seed: "cocina", src: imgCocina },
         { label: "Photocall", seed: "photocall", src: imgPhotocall },
+        { label: "Futbolín", seed: "futbolin", src: imgFutbolin },
         { label: "Mesa dulce", seed: "mesa", src: imgCandyBar },
         { label: "Celebraciones", seed: "celebraciones", src: imgFamily },
       ] as const,
