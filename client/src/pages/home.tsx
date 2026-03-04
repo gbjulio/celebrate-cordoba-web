@@ -53,6 +53,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const WHATSAPP_NUMBER = "614994794";
 const CONTACT_EMAIL = "celebratecordoba@gmail.com";
@@ -410,6 +411,7 @@ function Gallery() {
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -418,6 +420,14 @@ function Gallery() {
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
+
+  const nextImage = () => {
+    setSelectedImage((prev) => (prev === null ? null : (prev + 1) % photos.length));
+  };
+
+  const prevImage = () => {
+    setSelectedImage((prev) => (prev === null ? null : (prev - 1 + photos.length) % photos.length));
+  };
 
   return (
     <section id="instalaciones" className="pt-10 sm:pt-14" data-testid="section-galeria">
@@ -436,7 +446,10 @@ function Gallery() {
             <div className="flex touch-pan-y -ml-4 py-4">
               {photos.map((p, idx) => (
                 <div className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.33%] pl-4" key={p.seed}>
-                  <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                  <div 
+                    className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden rounded-3xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                    onClick={() => setSelectedImage(idx)}
+                  >
                     <img
                       alt={p.label}
                       src={p.src}
@@ -469,6 +482,41 @@ function Gallery() {
           </button>
         </div>
       </div>
+
+      <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="w-fit h-fit max-w-[95vw] max-h-[95vh] p-0 border-0 bg-transparent overflow-visible">
+          <div className="relative flex items-center justify-center">
+            <button
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-foreground hover:bg-white transition-all z-20"
+              onClick={prevImage}
+              aria-label="Imagen anterior"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+
+            {selectedImage !== null && (
+              <div className="relative flex items-center justify-center">
+                <img
+                  src={photos[selectedImage].src}
+                  alt={photos[selectedImage].label}
+                  className="max-w-[95vw] max-h-[90vh] object-contain rounded-2xl shadow-2xl"
+                />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/70 backdrop-blur-sm text-white font-bold text-sm sm:text-base">
+                  {photos[selectedImage].label}
+                </div>
+              </div>
+            )}
+
+            <button
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center text-foreground hover:bg-white transition-all z-20"
+              onClick={nextImage}
+              aria-label="Siguiente imagen"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
