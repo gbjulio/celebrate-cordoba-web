@@ -30,6 +30,7 @@ import {
   isSameDay,
   isBefore,
 } from "date-fns";
+import { es } from "date-fns/locale";
 
 import logo from "@/assets/images/logo.png";
 import heroBalloons from "@/assets/images/hero-balloons.png";
@@ -733,8 +734,8 @@ function AvailabilityCalendar() {
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-xs font-extrabold text-muted-foreground">Mes</div>
-                  <div className="font-display text-2xl font-extrabold tracking-tight" data-testid="text-month">
-                    {format(currentMonth, "LLLL yyyy")}
+                  <div className="font-display text-2xl font-extrabold tracking-tight capitalize" data-testid="text-month">
+                    {format(currentMonth, "LLLL yyyy", { locale: es })}
                   </div>
                 </div>
 
