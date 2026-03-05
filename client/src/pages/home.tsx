@@ -429,6 +429,23 @@ function Gallery() {
     setSelectedImage((prev) => (prev === null ? null : (prev - 1 + photos.length) % photos.length));
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImage === null) return;
+      
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        nextImage();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        prevImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage]);
+
   return (
     <section id="instalaciones" className="pt-10 sm:pt-14" data-testid="section-galeria">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
