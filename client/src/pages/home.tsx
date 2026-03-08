@@ -48,6 +48,7 @@ import imgEntrada from "@/assets/images/entrada.jpeg";
 import imgPhotocall from "@/assets/images/photocall.jpeg";
 import imgFutbolin from "@/assets/images/futbolin.jpeg";
 import imgSalaDeEstar from "@/assets/images/sala-de-estar.jpeg";
+import imgParqueInfantil from "@/assets/images/parque-infantil.jpeg";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -402,6 +403,7 @@ function Gallery() {
   const photos = useMemo(
     () =>
       [
+        { label: "Parque infantil", seed: "parque-infantil", src: imgParqueInfantil },
         { label: "Entrada", seed: "entrada", src: imgEntrada },
         { label: "Cocina", seed: "cocina", src: imgCocina },
         { label: "Photocall", seed: "photocall", src: imgPhotocall },
