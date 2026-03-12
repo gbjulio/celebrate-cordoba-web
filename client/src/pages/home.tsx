@@ -49,6 +49,8 @@ import imgPhotocall from "@/assets/images/photocall.jpeg";
 import imgFutbolin from "@/assets/images/futbolin.jpeg";
 import imgSalaDeEstar from "@/assets/images/sala-de-estar.jpeg";
 import imgParqueInfantil from "@/assets/images/parque-infantil.jpeg";
+import imgSalonPrincipal1 from "@/assets/images/salon-principal-1.jpeg";
+import imgSalonPrincipal2 from "@/assets/images/salon-principal-2.jpeg";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -403,6 +405,8 @@ function Gallery() {
   const photos = useMemo(
     () =>
       [
+        { label: "Salón principal", seed: "salon-principal-1", src: imgSalonPrincipal1 },
+        { label: "Salón principal", seed: "salon-principal-2", src: imgSalonPrincipal2 },
         { label: "Parque infantil", seed: "parque-infantil", src: imgParqueInfantil },
         { label: "Entrada", seed: "entrada", src: imgEntrada },
         { label: "Cocina", seed: "cocina", src: imgCocina },
